@@ -12,15 +12,15 @@ namespace Credit
     {
         public string Name;
         
-        public Dictionary<DateTime, int> userData;
+        public Dictionary<DateTime, double> userData;
         
         public UserData(string s)
         {
-            this.userData = new Dictionary<DateTime, int>();
+            this.userData = new Dictionary<DateTime, double>();
             this.Name = s;
         }
 
-        public void InsertData(int _Amu)      // Inserting User Data
+        public void InsertData(double _Amu)      // Inserting User Data
         {
             try
             {

@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="RuntimeData.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserData.cs" />
     <Page Include="MainWindow.xaml">

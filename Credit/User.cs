@@ -15,7 +15,7 @@ namespace Credit
 
         public static string _Name_current;
 
-        public static Dictionary<DateTime,int> _Amu_current;
+        public static Dictionary<DateTime,double> _Amu_current;
 
         public static void ReadDataFromFile()        // Read the data from File
         {
@@ -57,33 +57,47 @@ namespace Credit
 
         public static bool Search(string _Name)     // Search for a specific person
         {
-            ReadDataFromFile();
-            if (mainData.Count == 0)
-                return false;
-            foreach(var temp in mainData)
+            try
             {
-                if(temp.Name==_Name)
+                ReadDataFromFile();
+                if (mainData.Count == 0)
+                    return false;
+                foreach (var temp in mainData)
                 {
-                    _Name_current = temp.Name;
-                    _Amu_current = temp.userData;
-                    return true;
+                    if (temp.Name == _Name)
+                    {
+                        _Name_current = temp.Name;
+                        _Amu_current = temp.userData;
+                        return true;
+                    }
                 }
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+
             }
             return false;
         }
 
         public static void AddUser(string _Name)    // Add User to Records
         {
+            var temp = new UserData(_Name);
             try
             {
-                var temp = new UserData(_Name);
                 temp.InsertData(0);
                 mainData.Add(temp);
                 UpdateData();
             }
             catch
             {
-                MessageBox.Show("Some Problem Occurred Adding the Contact.\nPlease Try Again.", "Unexpected Error!");
+                mainData = new List<UserData>();
+                mainData.Add(temp);
+                UpdateData();
+                //MessageBox.Show("Some Problem Occurred Adding the Contact.\nPlease Try Again.", "Unexpected Error!");
             }
             finally
             {
@@ -110,7 +124,7 @@ namespace Credit
             }
         }
 
-        private static void UpdateData()
+        public static void UpdateData()
         {
             WriteDataToFile();
             ReadDataFromFile();
