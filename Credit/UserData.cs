@@ -14,12 +14,13 @@ namespace Credit
         
         public Dictionary<DateTime, int> userData;
         
-        public UserData()
+        public UserData(string s)
         {
-            // Constructor
+            this.userData = new Dictionary<DateTime, int>();
+            this.Name = s;
         }
 
-        public void insertData(int _Amu)      // Inserting User Data
+        public void InsertData(int _Amu)      // Inserting User Data
         {
             try
             {

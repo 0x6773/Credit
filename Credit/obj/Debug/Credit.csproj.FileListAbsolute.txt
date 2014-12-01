@@ -11,3 +11,6 @@ C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\obj\Deb
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\obj\Debug\Credit.csproj.GenerateResource.Cache
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\obj\Debug\Credit.exe
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\obj\Debug\Credit.pdb
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\Newtonsoft.Json.xml

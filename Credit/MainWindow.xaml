@@ -46,9 +46,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
-            <Button x:Name="checkUser" Content="Check User" Grid.Column="0" Grid.Row="1" Margin="5" Click="checkUser_Click"/>
-            <Button x:Name="saveUser" Content="Save User" Grid.Column="1" Grid.Row="1" Margin="5"/>
-            <Button x:Name="findUser" Content="Find User" Grid.Column="2" Grid.Row="1" Margin="5"/>
+            <Button x:Name="checkUser" Content="Find User" Grid.Column="0" Grid.Row="1" Margin="5" Click="checkUser_Click"/>
+            <Button x:Name="saveUser" Content="Create User" Grid.Column="1" Grid.Row="1" Margin="5" Click="saveUser_Click"/>
+            <Button x:Name="updateUser" Content="Update User" Grid.Column="2" Grid.Row="1" Margin="5"/>
             
         </Grid>
 

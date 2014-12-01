@@ -24,8 +24,8 @@ namespace Credit
         public MainWindow()
         {
             InitializeComponent();
-            if (!File.Exists(@"data.txt"))
-                File.Create(@"data.txt");
+            User.ReadDataFromFile();
+            User.mainData = new List<UserData>();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -40,7 +40,48 @@ namespace Credit
 
         private void checkUser_Click(object sender, RoutedEventArgs e)
         {
-               
+            try
+            {
+                var isFound = User.Search(data0.Text.ToString());
+                if(isFound)
+                {
+                    MessageBox.Show("The is some record present\nwith Name : " + data0.Text.ToString(), "Found"); 
+                }
+                else
+                {
+                    MessageBox.Show("No record is present\nwith Name : " + data0.Text.ToString(), "Not Found"); 
+                }
+            }
+            catch
+            {
+                MessageBox.Show("It seems like you haven`t set any data!", "Error Occurred!");
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void saveUser_Click(object sender, RoutedEventArgs e)           // Create User
+        {
+            try
+            {
+                User.AddUser(data0.Text.ToString());
+                /*var isFound = User.Search(data0.Text.ToString());
+                if(isFound)
+                {
+                    MessageBox.Show("User Record Already Present","Attention!");
+                    return;
+                }*/
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
         }
     }
 }
