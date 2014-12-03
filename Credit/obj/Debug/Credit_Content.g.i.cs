@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/exit0.ico")]
 
 

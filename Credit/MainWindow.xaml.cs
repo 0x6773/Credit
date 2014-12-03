@@ -222,13 +222,14 @@ namespace Credit
         {
             try
             {
-                if(check1_data0())                
-                {
-                    double theValue = 0.0; ;
-                    foreach (var temp in User.mainData.Where(s => s.Name == RuntimeData.Name))
-                        theValue += temp.GetSumAll();
-                    MessageBox.Show("Current Balance With " + RuntimeData.Name + " is : " + theValue.ToString(), RuntimeData.Name); 
-                }
+                if(check0_data0())
+                    if (check1_data0())
+                    {
+                        double temp = 0.0; 
+                        foreach (var x in User.mainData.Where(s => s.Name == RuntimeData.Name))
+                            temp = x.GetSumAll();
+                        MessageBox.Show("Current Balance With " + RuntimeData.Name + " is : " + temp.ToString(), RuntimeData.Name);
+                    }
             }
             catch
             {
@@ -257,6 +258,54 @@ namespace Credit
                         User.WriteReadData();
                         return;
                     }                    
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+
+        }
+
+        private void totalList_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                StringBuilder toPrint = new StringBuilder("");
+                toPrint.Append("Name\t\t\tAmount\n\n");
+                foreach (var temp in User.mainData)
+                    toPrint.AppendFormat("{0}\t\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+                MessageBox.Show(toPrint.ToString(), "Current List");                  
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
+        }
+
+        private void userList_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (check0_data0())
+                {
+                    if (check1_data0())
+                    {
+                        StringBuilder toPrint = new StringBuilder("");
+                        toPrint.Append("Amount\t\t\tDate Added\n\n");
+                        foreach (var temp in User.mainData.Where(s => s.Name == RuntimeData.Name))
+                            foreach (var xx in temp.userData)
+                                toPrint.AppendFormat("{0}\t\t:\t{1}\n", xx.Value.ToString(), xx.Key.ToString());
+                        MessageBox.Show(toPrint.ToString(), "User : " + RuntimeData.Name.ToString()); 
+                    }
                 }
             }
             catch

@@ -24,7 +24,7 @@ namespace Credit
         {
             try
             {
-                this.userData.Add(DateTime.Now, _Amu);
+                userData.Add(DateTime.Now, _Amu);
             }
             catch
             {
@@ -43,6 +43,11 @@ namespace Credit
                 toReturn += temp.Value;
             return toReturn;
         }
+
+        /*public string GetKey()
+        {
+            return this.userData.Keys;
+        }*/
 
     }
 }
