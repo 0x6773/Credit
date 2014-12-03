@@ -36,7 +36,7 @@ namespace Credit
             }
             catch
             {
-
+                MessageBox.Show("Something is stopping to close the application.\nPlease try Again.","Error!");
             }
             finally
             {
@@ -48,7 +48,7 @@ namespace Credit
         {
             try
             {
-                MessageBox.Show("Made By : \nGovind Sahai\nmafiya69");
+                MessageBox.Show("Made By  :  Govind Sahai\n\nGitHub     :  mafiya69\n\nIndian Institute of Technology\nBanaras Hindu University", "About Credit");
             }
             catch
             {
@@ -60,23 +60,13 @@ namespace Credit
             }
         }
 
-
         private void checkUser_Click(object sender, RoutedEventArgs e)          // Check User if Present
         {
             try
             {
                 if (check0_data0())
-                {
-                    var isFound = User.Search(RuntimeData.Name);
-                    if (isFound)
-                    {
+                    if(check1_data0())
                         MessageBox.Show("The is some record present\nwith Name : " + RuntimeData.Name, "Found");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No record is present\nwith Name : " + RuntimeData.Name, "Not Found");
-                    }
-                }
             }
             catch
             {
@@ -94,8 +84,7 @@ namespace Credit
             {
                 if (check0_data0())
                 {
-                    var isFound = User.Search(RuntimeData.Name);
-                    if (isFound)
+                    if (check1_data0(false))                                    // Returns true if User Record Found
                     {
                         MessageBox.Show("User Record Already Present", "Attention!");
                         return;
@@ -120,20 +109,11 @@ namespace Credit
             try
             {
                 if(check0_data0())
-                {
-                    var isFound = User.Search(RuntimeData.Name);
-                    if (!isFound)
+                    if (check1_data0())
                     {
-                        MessageBox.Show("User Record Not Found.\nPlease Enter Name With Active User Record.", "Attention!");
-                        return;
+                        boolChildGrid13(true);
+                        boolChildGrid0and2(false);
                     }
-                    else
-                    {
-                        data1.IsEnabled = true;
-                        getAmu0.IsEnabled = true;
-                        doneAmu0.IsEnabled = true;
-                    }
-                }
             }
             catch
             {
@@ -225,10 +205,8 @@ namespace Credit
         {
             try
             {
-                data1.IsEnabled = false;
-                data1.Text = "0";
-                getAmu0.IsEnabled = false;
-                doneAmu0.IsEnabled = false;
+                boolChildGrid0and2(true);
+                boolChildGrid13(false);
             }
             catch
             {
@@ -244,17 +222,12 @@ namespace Credit
         {
             try
             {
-                var isFound = User.Search(RuntimeData.Name);
-                if (isFound)
+                if(check1_data0())                
                 {
                     double theValue = 0.0; ;
                     foreach (var temp in User.mainData.Where(s => s.Name == RuntimeData.Name))
                         theValue += temp.GetSumAll();
-                    MessageBox.Show("Current Balance With " + RuntimeData.Name + " is : " + theValue.ToString()); 
-                }
-                else
-                {
-                    MessageBox.Show("No record is present\nwith Name : " + RuntimeData.Name, "Not Found");
+                    MessageBox.Show("Current Balance With " + RuntimeData.Name + " is : " + theValue.ToString(), RuntimeData.Name); 
                 }
             }
             catch
@@ -274,10 +247,14 @@ namespace Credit
             {
                 if (check0_data0())
                 {
-                    var isFound = User.Search(RuntimeData.Name);
-                    if (!isFound)
+                    if(check1_data0())
                     {
-                        MessageBox.Show("User Record Not Found.\nPlease Enter Name With Active User Record.", "Attention!");
+                        List<UserData> temp = new List<UserData>(); 
+                        foreach (var x in User.mainData.Where(s => s.Name != RuntimeData.Name))
+                            temp.Add(x);
+                        User.mainData.Clear();
+                        User.mainData = temp;
+                        User.WriteReadData();
                         return;
                     }                    
                 }
