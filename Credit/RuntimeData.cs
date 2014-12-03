@@ -8,8 +8,8 @@ namespace Credit
 {
     public static class RuntimeData
     {
-        public static string Name;
+        public static string Name = "";
 
-        public static double Amu;
+        public static double Amu = 0.0;
     }
 }

@@ -35,5 +35,14 @@ namespace Credit
 
             }
         }   
+
+        public double GetSumAll()
+        {
+            double toReturn=0.0;
+            foreach (var temp in this.userData)
+                toReturn += temp.Value;
+            return toReturn;
+        }
+
     }
 }

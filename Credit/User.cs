@@ -13,10 +13,6 @@ namespace Credit
     {
         public static List<UserData> mainData;
 
-        public static string _Name_current;
-
-        public static Dictionary<DateTime,double> _Amu_current;
-
         public static void ReadDataFromFile()        // Read the data from File
         {
             try
@@ -63,14 +59,8 @@ namespace Credit
                 if (mainData.Count == 0)
                     return false;
                 foreach (var temp in mainData)
-                {
                     if (temp.Name == _Name)
-                    {
-                        _Name_current = temp.Name;
-                        _Amu_current = temp.userData;
                         return true;
-                    }
-                }
             }
             catch
             {
@@ -90,14 +80,13 @@ namespace Credit
             {
                 temp.InsertData(0);
                 mainData.Add(temp);
-                UpdateData();
+                WriteReadData();
             }
             catch
             {
                 mainData = new List<UserData>();
                 mainData.Add(temp);
-                UpdateData();
-                //MessageBox.Show("Some Problem Occurred Adding the Contact.\nPlease Try Again.", "Unexpected Error!");
+                WriteReadData();
             }
             finally
             {
@@ -105,14 +94,14 @@ namespace Credit
             }
         }
 
-        public static void UpdateUser(string _Name,int _Amu)
+        public static void UpdateUser(string _Name,int _Amu)    //Update Account for user
         {
             try
             {
                 ReadDataFromFile();
                 foreach (var s in mainData.Where(w => w.Name == _Name))
                     s.InsertData(_Amu);
-                UpdateData();
+                WriteReadData();
             }
             catch
             {
@@ -124,11 +113,31 @@ namespace Credit
             }
         }
 
-        public static void UpdateData()
+        public static void WriteReadData()             // Write data then Read it, So that updated data is in disk as well as loaded
         {
             WriteDataToFile();
             ReadDataFromFile();
         }
+            
+        public static double GetSumOfUser()         // Get Sum of ALl users
+        {
+            try
+            {
+                ReadDataFromFile();
+                double toReturn = 0.0;
+                foreach (var item in mainData)
+                    toReturn += item.GetSumAll();
+                return toReturn;
+            }
+            catch
+            {
 
+            }
+            finally
+            {
+                
+            }
+            return 0.0;
+        }
     }
 }
