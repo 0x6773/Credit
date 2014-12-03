@@ -22,7 +22,6 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="_Edit"/>
             <MenuItem Header="_About" Click="MenuItem_Click_1"/>
         </Menu>
         <Grid x:Name="childGrid0" Grid.Row="1" Grid.Column="0" Margin="10,0,10,0">
@@ -56,6 +55,8 @@
             
             <Button x:Name="totalList" Content="Show List" Grid.Column="0" Grid.Row="2" Margin="5" Click="totalList_Click"/>
             <Button x:Name="userList" Content="User List" Grid.Column="1" Grid.Row="2" Margin="5" Click="userList_Click"/>
+            <Button x:Name="deleteAll" Content="Delete All" Grid.Column="2" Grid.Row="2" Margin="5" Click="deleteAll_Click"/>
+            
         </Grid>
         
         <Grid x:Name="childGrid13" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Margin="10,0,10,0">

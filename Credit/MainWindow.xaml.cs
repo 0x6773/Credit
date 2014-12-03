@@ -207,6 +207,7 @@ namespace Credit
             {
                 boolChildGrid0and2(true);
                 boolChildGrid13(false);
+                data1.Text = "0";
             }
             catch
             {
@@ -317,6 +318,27 @@ namespace Credit
 
             }
 
+        }
+
+        private void deleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var x = MessageBox.Show("Are your are you Want to Clear All Your Data?", "Attention!", MessageBoxButton.OKCancel);
+                if(x==MessageBoxResult.OK)
+                {
+                    User.mainData.Clear();
+                    User.WriteReadData();
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+
+            }
         }
     }
 }

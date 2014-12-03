@@ -84,6 +84,9 @@ namespace Credit
                 totalAll.IsEnabled = _Change;
                 totalUser.IsEnabled = _Change;
                 deleteUser.IsEnabled = _Change;
+                totalList.IsEnabled = _Change;
+                userList.IsEnabled = _Change;
+                deleteAll.IsEnabled = _Change;
             }
             catch
             {
