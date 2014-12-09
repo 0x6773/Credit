@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Credit
+namespace HelperLibrary
 {
     public class UserData
     {
@@ -24,11 +24,11 @@ namespace Credit
         {
             try
             {
-                userData.Add(DateTime.Now, _Amu);
+                this.userData.Add(DateTime.Now, _Amu);
             }
             catch
             {
-                MessageBox.Show("Error!", "Unknown Error Occurred.");
+                
             }
             finally
             {
@@ -43,11 +43,6 @@ namespace Credit
                 toReturn += temp.Value;
             return toReturn;
         }
-
-        /*public string GetKey()
-        {
-            return this.userData.Keys;
-        }*/
-
+    
     }
 }

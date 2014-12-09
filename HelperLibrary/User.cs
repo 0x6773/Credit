@@ -7,59 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Credit
+namespace HelperLibrary
 {
-    public static class User
+    public static partial class User
     {
         public static List<UserData> mainData;
-
-        public static void ReadDataFromFile()        // Read the data from File
-        {
-            try
-            {
-                using (var streamRead=new StreamReader(@"data.json"))
-                {
-                    string json = streamRead.ReadToEnd();
-                    mainData = JsonConvert.DeserializeObject<List<UserData>>(json);
-                }
-            }
-            catch
-            {
-                if(!File.Exists(@"data.json"))
-                    File.Create(@"data.json");
-            }
-            finally
-            {
-                
-            }
-        }   
-
-        public static void WriteDataToFile()        // Write the Data to Disk in Json Format
-        {
-            try
-            {
-                string json = JsonConvert.SerializeObject(mainData.ToArray());
-                File.WriteAllText(@"data.json", json);
-            }
-            catch
-            {
-                MessageBox.Show("Error!","Error Writing Data to Disks.");
-            }
-            finally
-            {
-
-            }
-        }
 
         public static bool Search(string _Name)     // Search for a specific person
         {
             try
-            {
-                ReadDataFromFile();
+            {   
                 if (mainData.Count == 0)
                     return false;
                 foreach (var temp in mainData)
-                    if (temp.Name == _Name)
+                    if (temp.Name.ToUpper() == _Name.ToUpper())
                         return true;
             }
             catch
@@ -73,12 +34,12 @@ namespace Credit
             return false;
         }
 
-        public static void AddUser(string _Name)    // Add User to Records
+        public static void AddUser(string _Name,double _Amu = 0.0)    // Add User to Records with _Amu
         {
             var temp = new UserData(_Name);
             try
             {
-                temp.InsertData(0);
+                temp.InsertData(_Amu);
                 mainData.Add(temp);
                 WriteReadData();
             }
@@ -105,25 +66,18 @@ namespace Credit
             }
             catch
             {
-                MessageBox.Show("Some Problem Occurred Updating the data.\nPlease Try Again.", "Unexpected Error!");
+                
             }
             finally
             {
 
             }
         }
-
-        public static void WriteReadData()             // Write data then Read it, So that updated data is in disk as well as loaded
-        {
-            WriteDataToFile();
-            ReadDataFromFile();
-        }
             
-        public static double GetSumOfUser()         // Get Sum of ALl users
+        public static double GetSumOfUser()         // Get Sum of All users
         {
             try
-            {
-                ReadDataFromFile();
+            {                
                 double toReturn = 0.0;
                 foreach (var item in mainData)
                     toReturn += item.GetSumAll();

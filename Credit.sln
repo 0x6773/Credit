@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Credit", "Credit\Credit.csproj", "{8FDF7D14-7ABA-4767-BF85-426FDF0EBDB1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCreditLine", "CCreditLine\CCreditLine.csproj", "{0437FA32-42E9-49FA-A184-88C2FE06627A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "HelperLibrary\HelperLibrary.csproj", "{171E8E09-3093-4575-84AF-81B2D80C1D80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8FDF7D14-7ABA-4767-BF85-426FDF0EBDB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FDF7D14-7ABA-4767-BF85-426FDF0EBDB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FDF7D14-7ABA-4767-BF85-426FDF0EBDB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0437FA32-42E9-49FA-A184-88C2FE06627A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0437FA32-42E9-49FA-A184-88C2FE06627A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0437FA32-42E9-49FA-A184-88C2FE06627A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0437FA32-42E9-49FA-A184-88C2FE06627A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{171E8E09-3093-4575-84AF-81B2D80C1D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{171E8E09-3093-4575-84AF-81B2D80C1D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{171E8E09-3093-4575-84AF-81B2D80C1D80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{171E8E09-3093-4575-84AF-81B2D80C1D80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
