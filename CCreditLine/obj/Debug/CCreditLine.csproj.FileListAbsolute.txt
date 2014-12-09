@@ -9,3 +9,7 @@ C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\bi
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\obj\Debug\CCreditLine.csprojResolveAssemblyReference.cache
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\obj\Debug\CCreditLine.exe
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\obj\Debug\CCreditLine.pdb
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\bin\Debug\CCreditLine.exe.manifest
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\bin\Debug\CCreditLine.application
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\obj\Debug\CCreditLine.exe.manifest
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\CCreditLine\obj\Debug\CCreditLine.application

@@ -48,7 +48,7 @@ namespace CCreditLine
                 }
                 catch (FormatException)
                 {
-                    Console.Write(" > Initial Amount is NOT is CORRECT format. \n > Initializing with Zero.\n");
+                    Console.Write(" > Initial Amount is NOT in CORRECT format. \n > Initializing with Zero.\n");
                     _initAMU = 0.0;
                 }
                 finally
@@ -59,7 +59,7 @@ namespace CCreditLine
             }
             catch(ArgumentOutOfRangeException)
             {
-                Console.WriteLine(" > Have you forget to give name to add to Records?");
+                Console.WriteLine(" > Have you forget to give name to add to your Records?");
             }
             catch (Exception e)
             {
@@ -112,6 +112,7 @@ namespace CCreditLine
                 foreach (var x in User.mainData.Where(s => s.Name != Input.words[1]))
                     temp.Add(x);
                 User.mainData.Clear();
+                Console.Write(" > User deleted with Name \"" + Input.words[1] + "\".\n"); 
                 User.mainData = temp;
                 User.WriteReadData();
             }
@@ -123,36 +124,142 @@ namespace CCreditLine
             {
                 Console.WriteLine(e.Message);
             }
+            finally
+            {
+
+            }
         }
 
         public static void exit()
         {
-
+            Environment.Exit(0);
         }
 
         public static void help()
         {
-
+            Output.help();
         }
 
         public static void show()
         {
+            try
+            {
+                if (!User.Search(Input.words[1]))
+                    throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is NOT Present!");
 
+                StringBuilder toPrint = new StringBuilder("");
+                toPrint.Append("\tAmount\t\t\tDate Added\n\n");
+                foreach (var temp in User.mainData.Where(s => s.Name == Input.words[1]))
+                    foreach (var xx in temp.userData)
+                        toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", xx.Value.ToString(), xx.Key.ToString());
+
+                Console.WriteLine(toPrint.ToString());
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine(" > Have you forget to give name to Show details?");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+
+            }
         }
 
         public static void showall()
         {
+            try
+            {
+                StringBuilder toPrint = new StringBuilder("");
+                toPrint.Append("\tName\t\t\tAmount\n\n");
+                foreach (var temp in User.mainData)
+                    toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+                Console.WriteLine(toPrint.ToString());
+            }
+            catch
+            {
 
+            }
+            finally
+            {
+
+            }
         }
 
         public static void total()
         {
+            try
+            {
+                double total = 0.0;
+                int number = 0;
+                StringBuilder toPrint = new StringBuilder("");
+                toPrint.Append("\tUser\t\t\tTotal\n\n");
+                foreach (var temp in User.mainData)
+                {
+                    var xx = temp.GetSumAll();
+                    toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, xx.ToString());
+                    total += xx;
+                    number++;
+                }
+                toPrint.AppendFormat("\n\tNet Total \t: \t{0}\n", total.ToString());
+                Console.WriteLine(toPrint.ToString());
+                Console.WriteLine("\tTotal Number of Records : {0}", number.ToString());
+            }
+            catch
+            {
 
+            }
+            finally
+            {
+
+            }
         }
 
         public static void update()
         {
+            try
+            {
+                if (!User.Search(Input.words[1]))
+                    throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is NOT Present!");
 
+
+                double _update_AMU = 0.0;
+
+                try
+                {
+                    _update_AMU = double.Parse(Input.words[2]);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    Console.Write(" > Amount NOT given. \n");
+                    _update_AMU = 0.0;
+                }
+                catch (FormatException)
+                {
+                    Console.Write(" > Amount is NOT in CORRECT format.\n");
+                    _update_AMU = 0.0;
+                }
+                finally
+                {
+                    User.AddUser(Input.words[1], _update_AMU);
+                    Console.Write(" > User updated with Name \"" + Input.words[1] + "\". \n > Updating with : " + _update_AMU.ToString() + "\n");
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine(" > Have you forget to give name to update your Records?");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+
+            }
         }
     }
 }

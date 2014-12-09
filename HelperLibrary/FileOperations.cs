@@ -10,7 +10,8 @@ namespace HelperLibrary
 {
     public static partial class User
     {
-        public static string filePath = @"C:/Credit/data.json";
+        public static string folderPath = @"C:/Credit";
+        public static string filePath = @"C:/Credit/data.json";        
         
         public static void ReadDataFromFile()        // Read the data from File
         {
@@ -24,8 +25,20 @@ namespace HelperLibrary
             }
             catch
             {
-                if (!File.Exists(filePath))
-                    File.Create(filePath);
+                try
+                {
+                    if (!File.Exists(filePath))
+                        File.Create(filePath);
+                }
+                catch(DirectoryNotFoundException)
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                finally
+                {
+                    if (!File.Exists(filePath))
+                        File.Create(filePath);
+                }
             }
             finally
             {

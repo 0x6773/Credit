@@ -16,3 +16,7 @@ C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Deb
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\HelperLibrary.dll
 C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\HelperLibrary.pdb
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\Credit.exe.manifest
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\bin\Debug\Credit.application
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\obj\Debug\Credit.exe.manifest
+C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\Credit\obj\Debug\Credit.application

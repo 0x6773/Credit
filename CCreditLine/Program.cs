@@ -27,6 +27,7 @@ namespace CCreditLine
         static void Main(string[] args)
         {
 
+            Console.WriteLine("Type \"help\" for getting help.\nAnd \"exit\" to exit.");
             User.ReadDataFromFile();
 
             Input.getUserInput();
