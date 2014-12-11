@@ -65,7 +65,7 @@ namespace HelperLibrary
             }
         }
 
-        public static void UpdateUser(string _Name,int _Amu)    //Update Account for user
+        public static void UpdateUser(string _Name,double _Amu)    //Update Account for user
         {
             try
             {

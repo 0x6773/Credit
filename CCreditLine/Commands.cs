@@ -253,7 +253,7 @@ namespace CCreditLine
                 }
                 finally
                 {
-                    User.AddUser(Input.words[1], _update_AMU);
+                    User.UpdateUser(Input.words[1], _update_AMU);
                     Console.Write(" > User updated with Name \"" + Input.words[1] + "\". \n > Updating with : " + _update_AMU.ToString() + "\n");
                 }
             }
