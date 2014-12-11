@@ -1,4 +1,14 @@
-﻿using HelperLibrary;
+﻿/*
+ *  Credit
+ *  https://github.com/mafiya69/Credit.git
+ * 
+ * Copyright (c) 2014 Govind Sahai
+ * Licensed under the MIT license.
+ * 
+ */
+
+
+using HelperLibrary;
 using System;
 using System.Collections.Generic;
 using System.IO;
