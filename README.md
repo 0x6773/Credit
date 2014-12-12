@@ -15,6 +15,6 @@ Type "help" in Command Line to get help
 
 ## Libraries Used
 
-.net Frameword 4.5.1 with external NuGet json Library for writing data to file in json format
-Made in Visual Studio 2013.
-Anyone can edit it.
+.net Framework 4.5.1 with external NuGet json Library for writing data to file in json format
+Made totally in Visual Studio 2013.
+Anyone can edit it(with my persmission :) :p ).
