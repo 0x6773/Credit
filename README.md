@@ -4,7 +4,7 @@ Maintain your credit with the help of simple UI or with Command Line
 
 ## Getting Started
 
-Run CCreditLine.bat for command Line and Credit.bat for UI 
+To Use You Must Have Visual Studio 2013 or Visual Studio 2015 installed
 
 Use it and Have Fun
 
@@ -15,6 +15,6 @@ Type "help" in Command Line to get help
 
 ## Libraries Used
 
-.net Framework 4.5.1 with external NuGet json Library for writing data to file in json format
-Made totally in Visual Studio 2013.
-Anyone can edit it(with my persmission :) :p ).
+.net Framework 4.5.1 with external NewtonSoft json Library for writing data to file in json format
+Made using Microsoft Visual Studio 2013 and Microsoft SQL Server Management Studio 2014.
+
