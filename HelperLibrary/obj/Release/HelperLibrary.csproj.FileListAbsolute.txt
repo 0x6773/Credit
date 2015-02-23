@@ -1,7 +1,0 @@
-C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\HelperLibrary\bin\Release\HelperLibrary.dll
-C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\HelperLibrary\bin\Release\HelperLibrary.pdb
-C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\HelperLibrary\bin\Release\Newtonsoft.Json.dll
-C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\HelperLibrary\bin\Release\Newtonsoft.Json.pdb
-C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\HelperLibrary\bin\Release\Newtonsoft.Json.xml
-C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\HelperLibrary\obj\Release\HelperLibrary.dll
-C:\Users\Govind Sahai\SkyDrive\Visual Studio 2013\Projects\Credit\HelperLibrary\obj\Release\HelperLibrary.pdb
