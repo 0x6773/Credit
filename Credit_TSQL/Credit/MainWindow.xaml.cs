@@ -7,7 +7,6 @@
  * 
  */
 
-
 using HelperLibrary;
 using System.Text;
 using System.Windows;

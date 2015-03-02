@@ -7,8 +7,6 @@
  * 
  */
 
-
-
 namespace Credit
 {
     public static class RuntimeData
