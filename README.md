@@ -18,3 +18,5 @@ Type "help" in Command Line to get help
 .net Framework 4.5.1 with external NewtonSoft json Library for writing data to file in json format
 Made using Microsoft Visual Studio 2013 and Microsoft SQL Server Management Studio 2014.
 
+##Credit for Linux(Terminal)
+It is under-Development on branch-'linux'
