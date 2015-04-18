@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * 
+ * Copyright (c) 2015 Govind Sahai
+ * Licensed Under MIT License
+ * 
+ */
+
+using System;
 
 namespace Credit_linux
 {
