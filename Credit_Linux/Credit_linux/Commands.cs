@@ -180,8 +180,12 @@ namespace Credit_linux
 			{
 				StringBuilder toPrint = new StringBuilder("");
 				toPrint.Append("\tName\t\t\tAmount\n\n");
-				foreach (var temp in User.mainData)
-					toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+				foreach (var temp in User.mainData){
+					if(temp.Name.Length>=8)
+						toPrint.AppendFormat("\t{0}\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+					else
+						toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+				}
 				Console.WriteLine(toPrint.ToString());
 			}
 			catch
@@ -205,7 +209,10 @@ namespace Credit_linux
 				foreach (var temp in User.mainData)
 				{
 					var xx = temp.GetSumAll();
-					toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, xx.ToString());
+					if(temp.Name.Length>=8)
+						toPrint.AppendFormat("\t{0}\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+					else
+						toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
 					total += xx;
 					number++;
 				}

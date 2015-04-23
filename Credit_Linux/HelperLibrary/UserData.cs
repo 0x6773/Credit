@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace HelperLibrary
 {
-	public class UserData
+	public class UserData : IComparable
 	{
 		public string Name;
 
@@ -44,6 +44,17 @@ namespace HelperLibrary
 			foreach (var temp in this.userData)
 				toReturn += temp.Value;
 			return toReturn;
+		}
+
+		public int CompareTo(Object o)
+		{
+			if (o == null)
+				return 1;
+			UserData uu = o as UserData;
+			if (uu != null) 
+				return this.Name.CompareTo(uu.Name);
+			else 
+				throw new ArgumentException("Object is not a Temperature");
 		}
 	}
 }

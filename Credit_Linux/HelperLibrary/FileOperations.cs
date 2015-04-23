@@ -7,6 +7,7 @@
 
 
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -14,8 +15,8 @@ namespace HelperLibrary
 {
 	public static partial class User
 	{
-		public static string folderPath= @"~/Codes";
-		public static string filePath=@"~/Codes/data.json";
+		public static string folderPath= @"/mnt/sda5/Credit";
+		public static string filePath=folderPath+@"/data.json";
 
 		public static void ReadDataFromFile()
 		{
@@ -27,7 +28,7 @@ namespace HelperLibrary
 					mainData=JsonConvert.DeserializeObject<List<UserData>>(json);
 				}
 			}
-			catch 
+			catch
 			{
 				try
 				{
