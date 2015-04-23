@@ -16,6 +16,7 @@ namespace Credit_linux
 		public static List<string> commandsList = new List<string> { 
 			"about",                            //  About Mafiya!
 			"add",                              //  Add user to Records
+			"branch",							//	Account Branch
 			"clear",                            //  Clear ALL Records
 			"cls",                              //  Clear Screemn
 			"delete",                           //  Delete User
@@ -31,7 +32,11 @@ namespace Credit_linux
 		{
 
 			if (args.Length == 0)
-				Console.WriteLine("Type \"help\" for getting help.\nAnd \"exit\" to exit.");
+				Console.WriteLine("Type \"help\" for getting help.\nAnd \"exit\" to exit.\n");
+
+			User.getBranch ();
+			Console.WriteLine ("Currently on branch : {0}", User.currBranch);
+
 			User.ReadDataFromFile();
 
 			Input.getUserInput(args);

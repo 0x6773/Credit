@@ -1,10 +1,11 @@
-﻿﻿/*
+﻿/*
  * 
  * Copyright (c) 2015 Govind Sahai
  * Licensed Under MIT License
  * 
  */
 
+using HelperLibrary;
 using System;
 
 namespace Credit_linux
@@ -13,7 +14,7 @@ namespace Credit_linux
 	{
 		public static void lineCommand()
 		{
-			Console.Write("\ncredit $ ");
+			Console.Write("\ncredit > branch : {0} $ ",User.currBranch);
 		}
 
 		public static void showCommandError(string _str)

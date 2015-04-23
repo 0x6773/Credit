@@ -60,6 +60,10 @@ namespace Credit_linux
 						Commands.add ();
 						break;
 
+					case "branch":
+						Commands.branch ();
+						break;
+
 					case "clear":
 						Commands.clear ();
 						break;
@@ -113,6 +117,10 @@ namespace Credit_linux
 
 				case "add":
 					Commands.add ();
+					break;
+
+				case "branch":
+					Commands.branch ();
 					break;
 
 				case "clear":

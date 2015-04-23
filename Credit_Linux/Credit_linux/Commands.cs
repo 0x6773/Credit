@@ -7,6 +7,7 @@
 using HelperLibrary;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -17,6 +18,7 @@ namespace Credit_linux
 		//public static List<string> commandsList = new List<string> { 
 		//    "about",                            //  About Mafiya!
 		//    "add",                              //  Add user to Records
+		//	  "branch",					          //  Account Branch
 		//    "clear",                            //  Clear ALL Records
 		//    "cls",                              //  Clear Screen
 		//    "delete",                           //  Delete User
@@ -74,7 +76,40 @@ namespace Credit_linux
 			{
 
 			}
+		}
 
+		public static void branch()
+		{
+			try
+			{
+				var bName = Input.words[1];
+				if(bName.Trim().Length==0)
+					throw new Exception();
+				User.setBranch(bName);
+			}
+			catch
+			{
+
+			}
+			finally 
+			{
+				try
+				{
+					string[] branches=Directory.GetFiles(User.folderPath,"*.json");
+					var toPrint=new StringBuilder("");
+					toPrint.AppendFormat("\tTotal Number of branches : {0}\n\tBranches : \n",branches.Length);
+					foreach(var temp in branches)
+					{
+						var fileInfo=new FileInfo(temp);
+						toPrint.AppendFormat("\t\t{0}\n", fileInfo.Name.Split('.')[0]);
+					}
+					Console.WriteLine(toPrint.ToString());
+				}
+				catch 
+				{
+
+				}
+			}
 		}
 
 		public static void clear()
@@ -113,6 +148,12 @@ namespace Credit_linux
 				if (!User.Search(Input.words[1]))
 					throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is NOT Present!");
 
+				Console.WriteLine("Are you sure want to delete Account with Name : {0} on branch : {1}?(Y for Yes)",Input.words[1],User.currBranch);
+				string ans=Console.ReadLine().Trim();
+
+				if(ans.ToUpper()!="Y")
+					throw new Exception();
+
 				List<UserData> temp = new List<UserData>();
 				foreach (var x in User.mainData.Where(s => s.Name != Input.words[1]))
 					temp.Add(x);
@@ -125,9 +166,9 @@ namespace Credit_linux
 			{
 				Console.WriteLine(" > Have you forget to give name to Delete?");
 			}
-			catch(Exception e)
+			catch
 			{
-				Console.WriteLine(e.Message);
+
 			}
 			finally
 			{

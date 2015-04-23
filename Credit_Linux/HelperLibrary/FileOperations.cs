@@ -16,7 +16,86 @@ namespace HelperLibrary
 	public static partial class User
 	{
 		public static string folderPath= @"/mnt/sda5/Credit";
-		public static string filePath=folderPath+@"/data.json";
+		public static string filePath = null;
+		public static string branchFile=folderPath+@"/branch.txt";
+		public static string currBranch = null;
+
+		public static void getBranch()
+		{
+			try
+			{
+				using(var streamRead=new StreamReader(branchFile))
+				{
+					currBranch=streamRead.ReadToEnd();
+					currBranch=currBranch.Trim();
+					filePath=folderPath+@"/"+currBranch+@".json";
+				}
+			}
+			catch 
+			{
+				Console.WriteLine ("LOL exception thorwn");
+				try
+				{
+					if (!File.Exists (branchFile))
+						File.Create (branchFile);
+					File.WriteAllText(branchFile,"main");
+					currBranch="main";
+					filePath=folderPath+@"/"+currBranch+@".json";
+				}
+				catch(DirectoryNotFoundException) 
+				{
+					Directory.CreateDirectory (folderPath);
+				}
+				finally 
+				{
+					if (!File.Exists (branchFile))
+						File.Create (branchFile);
+					File.WriteAllText(branchFile,"main");
+					currBranch="main";
+					filePath=folderPath+@"/"+currBranch+@".json";
+				}
+			}
+			finally 
+			{
+
+			}
+		}
+
+		public static void setBranch(string bName)
+		{
+			try
+			{
+				string tempBranchName = folderPath+@"/"+bName+@".json";
+				if (!File.Exists (tempBranchName))
+				{
+					Console.WriteLine(" > There in no branch Named : {0}, would you like to create a new one?(Y for Yes)",bName);
+					string ans=Console.ReadLine().Trim();
+					if(ans.ToUpper()=="Y")
+					{
+						File.Create (tempBranchName);
+					}
+					else
+					{
+						Console.WriteLine(" > No new branch created.");
+						throw new Exception();
+					}
+				}
+				Console.WriteLine(" > Switched to branch : {0}.",bName);
+				File.WriteAllText(branchFile,bName);
+				filePath=tempBranchName;
+				currBranch=bName;
+				ReadDataFromFile();
+			}
+			catch 
+			{
+
+			}
+			finally
+			{
+
+			}
+
+		}
 
 		public static void ReadDataFromFile()
 		{
