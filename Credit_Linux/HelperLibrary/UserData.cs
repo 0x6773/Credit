@@ -10,6 +10,7 @@ using System.Collections.Generic;
 
 namespace HelperLibrary
 {
+
 	public class UserData : IComparable
 	{
 		public string Name;
