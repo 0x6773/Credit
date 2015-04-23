@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Credit_linux", "Credit_linux.csproj", "{8E713ACA-0688-4CA9-B885-C94F10CB93AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperLibrary", "..\HelperLibrary\HelperLibrary.csproj", "{6E3B9D9F-FE82-427A-BC74-BA224FA7C7A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E3B9D9F-FE82-427A-BC74-BA224FA7C7A9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6E3B9D9F-FE82-427A-BC74-BA224FA7C7A9}.Debug|x86.Build.0 = Debug|Any CPU
+		{6E3B9D9F-FE82-427A-BC74-BA224FA7C7A9}.Release|x86.ActiveCfg = Release|Any CPU
+		{6E3B9D9F-FE82-427A-BC74-BA224FA7C7A9}.Release|x86.Build.0 = Release|Any CPU
+		{8E713ACA-0688-4CA9-B885-C94F10CB93AA}.Debug|x86.ActiveCfg = Debug|x86
+		{8E713ACA-0688-4CA9-B885-C94F10CB93AA}.Debug|x86.Build.0 = Debug|x86
+		{8E713ACA-0688-4CA9-B885-C94F10CB93AA}.Release|x86.ActiveCfg = Release|x86
+		{8E713ACA-0688-4CA9-B885-C94F10CB93AA}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Credit_linux.csproj
+	EndGlobalSection
+EndGlobal
