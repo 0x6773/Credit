@@ -27,6 +27,7 @@ namespace HelperLibrary
 					string json=streamRead.ReadToEnd();
 					mainData=JsonConvert.DeserializeObject<List<UserData>>(json);
 				}
+				mainData.Sort();
 			}
 
 			catch
@@ -56,6 +57,7 @@ namespace HelperLibrary
 		{
 			try
 			{
+				mainData.Sort();
 				string json=JsonConvert.SerializeObject(mainData.ToArray());
 				File.WriteAllText(filePath,json);
 			}
