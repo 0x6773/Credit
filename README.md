@@ -19,4 +19,4 @@ Type "help" in Command Line to get help
 Made using Microsoft Visual Studio 2013 and Microsoft SQL Server Management Studio 2014.
 
 ##Credit for Linux(Terminal)
-It is under-Development on branch-'linux'
+To Compile Credit for Linux You need to have `Mono-C#` compiler installed on your system.
