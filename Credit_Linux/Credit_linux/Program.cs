@@ -5,15 +5,38 @@
  * 
  */
 
+using HelperLibrary;
 using System;
+using System.Collections.Generic;
 
 namespace Credit_linux
 {
-	class MainClass
+	public static class Program
 	{
-		public static void Main (string[] args)
+		public static List<string> commandsList = new List<string> { 
+			"about",                            //  About Mafiya!
+			"add",                              //  Add user to Records
+			"clear",                            //  Clear ALL Records
+			"cls",                              //  Clear Screemn
+			"delete",                           //  Delete User
+			"exit",                             //  Exit Credit_linux
+			"help",                             //  Help to Credit_linux
+			"show",                             //  Show User Data
+			"showall",                          //  Show All Users Data
+			"total",                            //  Total Balance 
+			"update"                            //  Update(Insert) User Data
+		};
+
+		static void Main(string[] args)
 		{
-			Console.WriteLine ("Hello World!");
+
+			if (args.Length == 0)
+				Console.WriteLine("Type \"help\" for getting help.\nAnd \"exit\" to exit.");
+			User.ReadDataFromFile();
+
+			Input.getUserInput(args);
+
+			Console.ReadKey();
 		}
 	}
 }
