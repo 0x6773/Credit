@@ -15,11 +15,14 @@ namespace HelperLibrary
 {
 	public static partial class User
 	{
-		public static string folderPath= @"/mnt/sda5/Credit";
+		public static string folderPath= @"/mnt/sda5/Credit_exp";
 		public static string filePath = null;
 		public static string branchFile=folderPath+@"/branch.txt";
 		public static string currBranch = null;
 
+		/*
+		 * Get Branch Previously at, At StartUp
+		 */
 		public static void getBranch()
 		{
 			try
@@ -33,12 +36,11 @@ namespace HelperLibrary
 			}
 			catch 
 			{
-				Console.WriteLine ("LOL exception thorwn");
 				try
 				{
-					if (!File.Exists (branchFile))
-						File.Create (branchFile);
-					File.WriteAllText(branchFile,"main");
+					using (var sw = new StreamWriter (branchFile)) {
+						sw.Write ("main");
+					}
 					currBranch="main";
 					filePath=folderPath+@"/"+currBranch+@".json";
 				}
@@ -48,9 +50,9 @@ namespace HelperLibrary
 				}
 				finally 
 				{
-					if (!File.Exists (branchFile))
-						File.Create (branchFile);
-					File.WriteAllText(branchFile,"main");
+					using (var sw = new StreamWriter (branchFile)) {
+						sw.Write ("main");
+					}
 					currBranch="main";
 					filePath=folderPath+@"/"+currBranch+@".json";
 				}
@@ -61,6 +63,9 @@ namespace HelperLibrary
 			}
 		}
 
+		/*
+		 * Set Branch if user changes it
+		 */
 		public static void setBranch(string bName)
 		{
 			try
@@ -81,7 +86,9 @@ namespace HelperLibrary
 					}
 				}
 				Console.WriteLine(" > Switched to branch : {0}.",bName);
-				File.WriteAllText(branchFile,bName);
+				using (var sw = new StreamWriter (branchFile)) {
+					sw.Write (bName);
+				}
 				filePath=tempBranchName;
 				currBranch=bName;
 				ReadDataFromFile();
@@ -97,6 +104,9 @@ namespace HelperLibrary
 
 		}
 
+		/*
+		 * Read JSON Data from file and parse & parse it
+		 */
 		public static void ReadDataFromFile()
 		{
 			try
@@ -132,6 +142,9 @@ namespace HelperLibrary
 			}
 		}
 
+		/*
+		 * Write data in memory to disk 
+		 */
 		public static void WriteDataToFile()
 		{
 			try
@@ -150,6 +163,9 @@ namespace HelperLibrary
 			}
 		}
 
+		/*
+		 * Just do above operations one-by-one
+		 */
 		public static void WriteReadData()
 		{
 			WriteDataToFile ();
@@ -157,4 +173,3 @@ namespace HelperLibrary
 		}
 	}
 }
-

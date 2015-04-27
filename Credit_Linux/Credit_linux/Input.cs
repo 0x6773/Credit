@@ -18,6 +18,9 @@ namespace Credit_linux
 		private static bool doubleEnter = false;
 		public static List<String> words = new List<string>();
 
+		/*
+		 * All User Input Handled Here
+		 */
 		public static void getUserInput(string[] args)
 		{
 			if (args.Length == 0) {
@@ -50,122 +53,76 @@ namespace Credit_linux
 					if (words.Count == 0)
 						continue;
 
-
-					switch (words [0].ToLower ()) {
-					case "about":
-						Commands.about ();
-						break;
-
-					case "add":
-						Commands.add ();
-						break;
-
-					case "branch":
-						Commands.branch ();
-						break;
-
-					case "clear":
-						Commands.clear ();
-						break;
-
-					case "cls":
-						Commands.cls ();
-						break;
-
-					case "delete":
-						Commands.delete ();
-						break;
-
-					case "exit":
-						Commands.exit ();
-						break;
-
-					case "help":
-						Commands.help ();
-						break;
-
-					case "show":
-						Commands.show ();
-						break;
-
-					case "showall":
-						Commands.showall ();
-						break;
-
-					case "total":
-						Commands.total ();
-						break;
-
-					case "update":
-						Commands.update ();
-						break;
-
-					default:
-						Output.showCommandError (words [0]);
-						continue;
-					}
+					switching (words [0].ToLower ());
 				}
 			} else {
 
 				foreach (var temp in args)
 					words.Add (temp);
 
-				switch (words [0].ToLower ()) {
-				case "about":
-					Commands.about ();
-					break;
-
-				case "add":
-					Commands.add ();
-					break;
-
-				case "branch":
-					Commands.branch ();
-					break;
-
-				case "clear":
-					Commands.clear ();
-					break;
-
-				case "cls":
-					Commands.cls ();
-					break;
-
-				case "delete":
-					Commands.delete ();
-					break;
-
-				case "exit":
-					Commands.exit ();
-					break;
-
-				case "help":
-					Commands.help ();
-					break;
-
-				case "show":
-					Commands.show ();
-					break;
-
-				case "showall":
-					Commands.showall ();
-					break;
-
-				case "total":
-					Commands.total ();
-					break;
-
-				case "update":
-					Commands.update ();
-					break;
-
-				default:
-					Output.showCommandError (words [0]);
-					break;
-				}
-
+				switching (words [0].ToLower ());
 
 				Environment.Exit (0);
+			}	// if -else
+		}//getUserInput
+
+		/*
+		 * Helper Function
+		 */
+		private static void switching(string _cc)
+		{
+			switch (_cc) {
+			case "about":
+				Commands.about ();
+				break;
+
+			case "add":
+				Commands.add ();
+				break;
+
+			case "branch":
+				Commands.branch ();
+				break;
+
+			case "clear":
+				Commands.clear ();
+				break;
+
+			case "cls":
+				Commands.cls ();
+				break;
+
+			case "delete":
+				Commands.delete ();
+				break;
+
+			case "exit":
+				Commands.exit ();
+				break;
+
+			case "help":
+				Commands.help ();
+				break;
+
+			case "show":
+				Commands.show ();
+				break;
+
+			case "showall":
+				Commands.showall ();
+				break;
+
+			case "total":
+				Commands.total ();
+				break;
+
+			case "update":
+				Commands.update ();
+				break;
+
+			default:
+				Output.showCommandError (words [0]);
+				break;
 			}
 		}
 	}
