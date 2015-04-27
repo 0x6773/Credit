@@ -15,7 +15,7 @@ namespace HelperLibrary
 {
 	public static partial class User
 	{
-		public static string folderPath= @"/mnt/sda5/Credit_exp";
+		public static string folderPath= @"/mnt/sda5/Credit";
 		public static string filePath = null;
 		public static string branchFile=folderPath+@"/branch.txt";
 		public static string currBranch = null;
