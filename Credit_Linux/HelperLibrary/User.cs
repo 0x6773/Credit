@@ -15,67 +15,67 @@ namespace HelperLibrary
 	{
 		public static List<UserData> mainData;
 
+		/*
+		 * Find presence of any user
+		 */
 		public static bool Search(string _Name)
 		{
-			try
-			{
+			try	{
 				if(mainData.Count == 0)
 					return false;
-				foreach(var temp in mainData)
-					if(temp.Name.ToUpper()==_Name.ToUpper())
-						return true;
+
+				if(mainData.Where(x => x.Name.ToUpper() == _Name.ToUpper()).ToList().Count >0)
+					return true;
 			}
-			catch 
-			{
+			catch {
 				return false;
 			}
-			finally 
-			{
+			finally {
 
 			}
 			return false;
 		}
 
-		public static void AddUser(string _Name, double _Amu = 0.0)
+		/*
+		 * AddUser with current information 
+		 */
+		public static void AddUser (string _Name, double _Amu = 0.0, string _note = "--Nil--")
 		{
 			var temp = new UserData (_Name);
-			try
-			{
-				temp.InsertData(_Amu);
+			try	{
+				temp.InsertData(_Amu,_note);
 				mainData.Add(temp);
 				WriteReadData();
 			}
-			catch 
-			{
+			catch {
 				mainData = new List<UserData> ();
 				mainData.Add (temp);
 				WriteReadData ();
 			}
-			finally 
-			{
-
+			finally {
 			}
 		}
 
-		public static void UpdateUser(string _Name, double _Amu)
+		/*
+		 * Update User
+		 */
+		public static void UpdateUser(string _Name, double _Amu, string _note="--Nil--")
 		{
-			try
-			{
+			try {
 				ReadDataFromFile();
 				foreach(var temp in mainData.Where(w => w.Name == _Name))
-					temp.InsertData(_Amu);
+					temp.InsertData(_Amu,_note);
 				WriteReadData();
 			}
-			catch 
-			{
-
+			catch {
 			}
-			finally 
-			{
-
+			finally {
 			}
 		}
 
+		/*
+		 * Get Sum of All Users 
+		 */
 		public static double GetSumOfUser()
 		{
 			try
@@ -85,16 +85,11 @@ namespace HelperLibrary
 					toReturn+=item.GetSumAll();
 				return toReturn;
 			}
-			catch 
-			{
-
+			catch {
 			}
-			finally 
-			{
-
+			finally {
 			}
 			return 0.0;
 		}
 	}
 }
-

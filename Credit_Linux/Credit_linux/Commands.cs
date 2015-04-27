@@ -30,11 +30,17 @@ namespace Credit_linux
 		//    "update"                            //  Update(Insert) User Data
 		//};
 
+		/*
+		 * About Me
+		 */
 		public static void about()
 		{
 			Output.about();
 		}
 
+		/*
+		 * add User
+		 */
 		public static void add()
 		{
 			try
@@ -43,10 +49,18 @@ namespace Credit_linux
 					throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is Already Present!");
 
 				double _initAMU = 0.0; 
+				string _note="--Nil--";
 
 				try
 				{
 					_initAMU = double.Parse(Input.words[2]);
+					if(Input.words.Count>3)
+					{
+						_note=Input.words[3];
+						_note=_note.Trim().Replace('+',' ');
+					}
+					else
+						_note="--Nil--";	
 				}
 				catch (ArgumentOutOfRangeException)
 				{
@@ -60,24 +74,23 @@ namespace Credit_linux
 				}
 				finally
 				{
-					User.AddUser(Input.words[1], _initAMU);
+					User.AddUser(Input.words[1], _initAMU,_note);
 					Console.Write(" > User created with Name \"" + Input.words[1] + "\". \n > Initializing with : " + _initAMU.ToString() + "\n"); 
 				}
 			}
-			catch(ArgumentOutOfRangeException)
-			{
+			catch(ArgumentOutOfRangeException) {
 				Console.WriteLine(" > Have you forget to give name to add to your Records?");
 			}
-			catch (Exception e)
-			{
+			catch (Exception e) {
 				Console.WriteLine(e.Message);
 			}
-			finally
-			{
-
+			finally{
 			}
 		}
 
+		/*
+		 * Add/Switch Branch
+		 */
 		public static void branch()
 		{
 			try
@@ -87,8 +100,7 @@ namespace Credit_linux
 					throw new Exception();
 				User.setBranch(bName);
 			}
-			catch
-			{
+			catch {
 
 			}
 			finally 
@@ -105,13 +117,15 @@ namespace Credit_linux
 					}
 					Console.WriteLine(toPrint.ToString());
 				}
-				catch 
-				{
+				catch {
 
 				}
 			}
 		}
 
+		/*
+		 * clear all records
+		 */
 		public static void clear()
 		{
 			try
@@ -126,21 +140,23 @@ namespace Credit_linux
 					User.WriteReadData();
 				}
 			}
-			catch
-			{
-
+			catch {
 			}
-			finally
-			{
-
+			finally {
 			}
 		}
 
+		/*
+		 * Clear Screen
+		 */
 		public static void cls()
 		{
 			Console.Clear();
 		}
 
+		/*
+		 * Delete User
+		 */
 		public static void delete()
 		{
 			try
@@ -162,30 +178,36 @@ namespace Credit_linux
 				User.mainData = temp;
 				User.WriteReadData();
 			}
-			catch (ArgumentOutOfRangeException)
-			{
+			catch (ArgumentOutOfRangeException) {
 				Console.WriteLine(" > Have you forget to give name to Delete?");
 			}
-			catch
-			{
+			catch {
 
 			}
-			finally
-			{
+			finally	{
 
 			}
 		}
 
+		/*
+		 * Exit Console Window
+		 */
 		public static void exit()
 		{
 			Environment.Exit(0);
 		}
 
+		/*
+		 * Get help
+		 */
 		public static void help()
 		{
 			Output.help();
 		}
 
+		/*
+		 * Show User Details
+		 */
 		public static void show()
 		{
 			try
@@ -194,10 +216,15 @@ namespace Credit_linux
 					throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is NOT Present!");
 
 				StringBuilder toPrint = new StringBuilder("");
-				toPrint.Append("\tAmount\t\t\tDate Added\n\n");
+				toPrint.Append("\tAmount\t\t\tDate Added\t\t\tNote\n\n");
 				foreach (var temp in User.mainData.Where(s => s.Name == Input.words[1]))
+				{
 					foreach (var xx in temp.userData)
-						toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", xx.Value.ToString(), xx.Key.ToString());
+						toPrint.AppendFormat("\t{0}\t\t:\t{1}\t:\t{2}\n", 
+							xx.Value.Item1.ToString(), xx.Key.ToString(),xx.Value.Item2.ToString());
+
+					toPrint.AppendFormat("\n\tTotal Balance with {0} is {1}\n",Input.words[1],temp.GetSumAll());
+				}
 
 				Console.WriteLine(toPrint.ToString());
 			}
@@ -215,6 +242,9 @@ namespace Credit_linux
 			}
 		}
 
+		/*
+		 * Show all Users
+		 */
 		public static void showall()
 		{
 			try
@@ -229,16 +259,15 @@ namespace Credit_linux
 				}
 				Console.WriteLine(toPrint.ToString());
 			}
-			catch
-			{
-
+			catch {
 			}
-			finally
-			{
-
+			finally {
 			}
 		}
 
+		/*
+		 * Show Total User-Same a showall()
+		 */
 		public static void total()
 		{
 			try
@@ -261,45 +290,54 @@ namespace Credit_linux
 				Console.WriteLine(toPrint.ToString());
 				Console.WriteLine("\tTotal Number of Records : {0}", number.ToString());
 			}
-			catch
-			{
-
+			catch {
 			}
-			finally
-			{
-
+			finally {
 			}
 		}
 
+		/*
+		 * Update User Details
+		 */
 		public static void update()
 		{
 			try
 			{
 				if (!User.Search(Input.words[1]))
 					throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is NOT Present!");
-
-
+					
 				double _update_AMU = 0.0;
+				string _note="--Nil--";
 
 				try
 				{
 					_update_AMU = double.Parse(Input.words[2]);
+
+					if(Input.words.Count>3)
+					{
+						_note=Input.words[3];
+						_note=_note.Trim().Replace('+',' ');
+					}
+					else
+						_note="--Nil--";	
 				}
 				catch (ArgumentOutOfRangeException)
 				{
 					Console.Write(" > Amount NOT given. \n");
 					_update_AMU = 0.0;
+					return;
 				}
 				catch (FormatException)
 				{
 					Console.Write(" > Amount is NOT in CORRECT format.\n");
 					_update_AMU = 0.0;
+					return;
 				}
-				finally
-				{
-					User.UpdateUser(Input.words[1], _update_AMU);
-					Console.Write(" > User updated with Name \"" + Input.words[1] + "\". \n > Updating with : " + _update_AMU.ToString() + "\n");
+				finally	{
 				}
+				User.UpdateUser(Input.words[1], _update_AMU, _note);
+				Console.Write(" > User updated with Name \"" + Input.words[1] + 
+					"\". \n > Updating with : " + _update_AMU.ToString() + "\n");
 			}
 			catch (ArgumentOutOfRangeException)
 			{
@@ -309,9 +347,7 @@ namespace Credit_linux
 			{
 				Console.WriteLine(e.Message);
 			}
-			finally
-			{
-
+			finally	{
 			}
 		}
 	}
