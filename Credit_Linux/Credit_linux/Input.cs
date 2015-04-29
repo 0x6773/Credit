@@ -112,6 +112,10 @@ namespace Credit_linux
 				Commands.showall ();
 				break;
 
+			case "showdate":
+				Commands.showdate ();
+				break;
+
 			case "total":
 				Commands.total ();
 				break;

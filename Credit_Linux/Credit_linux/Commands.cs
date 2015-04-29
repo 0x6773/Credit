@@ -26,6 +26,7 @@ namespace Credit_linux
 		//    "help",                             //  Help to CCreditLine
 		//    "show",                             //  Show User Data
 		//    "showall",                          //  Show All Users Data
+		//	  "showdate",						  //  Show all transactions on given date
 		//    "total",                            //  Total Balance 
 		//    "update"                            //  Update(Insert) User Data
 		//};
@@ -262,6 +263,54 @@ namespace Credit_linux
 			catch {
 			}
 			finally {
+			}
+		}
+
+		/*
+		 * Show transactions on given date
+		 */
+		public static void showdate()
+		{
+			try
+			{
+				StringBuilder toPrint=new StringBuilder("");
+				DateTime cDate=DateTime.Now;
+				try
+				{
+					cDate=DateTime.Parse(Input.words[1]);
+				}
+				catch{
+				}
+				toPrint.AppendFormat("\n  Your Transaction on {0}\n\n",cDate.ToLongDateString());
+				toPrint.AppendFormat("\tUser\t\t\tAmount\t\tNote\n\n");
+				int num=0;
+				foreach(var pep in User.mainData)
+				{
+					bool chk=false;
+					foreach (var data in pep.userData) {
+						if(data.Key.Date==cDate.Date){
+							chk=true;
+							num++;
+							if(pep.Name.Length>=8)
+								toPrint.AppendFormat("\t{0}\t:\t{1}\t:\t{2}\n",
+									pep.Name, data.Value.Item1.ToString(),data.Value.Item2.ToString());
+							else
+								toPrint.AppendFormat("\t{0}\t\t:\t{1}\t:\t{2}\n",
+									pep.Name, data.Value.Item1.ToString(),data.Value.Item2.ToString());
+						}
+					}
+					if(chk)
+						toPrint.AppendFormat("\n");
+				}
+				toPrint.AppendFormat("\n\tTotal number of transactions on {0} : {1}\n\n",
+					cDate.ToLongDateString(),num.ToString());
+				Console.WriteLine(toPrint.ToString());
+			}
+			catch {
+
+			}
+			finally {
+
 			}
 		}
 
