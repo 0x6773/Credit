@@ -108,6 +108,10 @@ namespace Credit_linux
 				Commands.show ();
 				break;
 
+			case "showafterdate":
+				Commands.showafterdate ();
+				break;
+
 			case "showall":
 				Commands.showall ();
 				break;
