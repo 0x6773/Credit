@@ -15,22 +15,6 @@ namespace Credit_linux
 {
 	public static class Commands
 	{
-		//public static List<string> commandsList = new List<string> { 
-		//    "about",                            //  About Mafiya!
-		//    "add",                              //  Add user to Records
-		//	  "branch",					          //  Account Branch
-		//    "clear",                            //  Clear ALL Records
-		//    "cls",                              //  Clear Screen
-		//    "delete",                           //  Delete User
-		//    "exit",                             //  Exit CCreditLine
-		//    "help",                             //  Help to CCreditLine
-		//    "show",                             //  Show User Data
-		//    "showall",                          //  Show All Users Data
-		//	  "showdate",						  //  Show all transactions on given date
-		//    "total",                            //  Total Balance 
-		//    "update"                            //  Update(Insert) User Data
-		//};
-
 		/*
 		 * About Me
 		 */
@@ -267,6 +251,84 @@ namespace Credit_linux
 		}
 
 		/*
+		 * Returns Data on current Date
+		 * Helper Method to : showdate and showdateafter
+		 */
+		private static StringBuilder showdatehelper (DateTime cDate,ref bool x)
+		{
+			StringBuilder toReturn=new StringBuilder("");
+			try
+			{
+				toReturn.AppendFormat("\n  Your Transaction on {0}\n\n",cDate.ToLongDateString());
+				if(!x)
+				{
+					toReturn.AppendFormat("\tUser\t\t\tAmount\t\tNote\n\n");
+					x=false;
+				}
+				int num=0;
+				foreach(var pep in User.mainData)
+				{
+					bool chk=false;
+					foreach (var data in pep.userData) {
+						if(data.Key.Date==cDate.Date){
+							chk=true;
+							num++;
+							if(pep.Name.Length>=8)
+								toReturn.AppendFormat("\t{0}\t:\t{1}\t:\t{2}\n",
+									pep.Name, data.Value.Item1.ToString(),data.Value.Item2.ToString());
+							else
+								toReturn.AppendFormat("\t{0}\t\t:\t{1}\t:\t{2}\n",
+									pep.Name, data.Value.Item1.ToString(),data.Value.Item2.ToString());
+						}
+					}
+					if(chk)
+						toReturn.AppendFormat("\n");
+				}
+				toReturn.AppendFormat("\n\tTotal number of transactions on {0} : {1}\n\n",
+					cDate.ToLongDateString(),num.ToString());
+			}
+			catch 
+			{
+
+			}
+			finally 
+			{
+
+			}
+			return toReturn;
+		}
+
+		/*
+		 * Show All Transaction After Date
+		 */
+		public static void showafterdate()
+		{
+			try
+			{
+				StringBuilder toPrint=new StringBuilder("");
+				DateTime cDate=DateTime.Now.AddDays(-1);
+				try
+				{
+					cDate=DateTime.Parse(Input.words[1]);
+				}
+				catch{
+				}
+				bool multiple=false;
+				for(;cDate.Date<=DateTime.Now.Date;cDate=cDate.AddDays(1))
+					toPrint.AppendFormat("{0}",showdatehelper(cDate,ref multiple));
+				Console.WriteLine(toPrint.ToString());
+			}
+			catch 
+			{
+
+			}
+			finally 
+			{
+
+			}
+		}
+
+		/*
 		 * Show transactions on given date
 		 */
 		public static void showdate()
@@ -281,29 +343,8 @@ namespace Credit_linux
 				}
 				catch{
 				}
-				toPrint.AppendFormat("\n  Your Transaction on {0}\n\n",cDate.ToLongDateString());
-				toPrint.AppendFormat("\tUser\t\t\tAmount\t\tNote\n\n");
-				int num=0;
-				foreach(var pep in User.mainData)
-				{
-					bool chk=false;
-					foreach (var data in pep.userData) {
-						if(data.Key.Date==cDate.Date){
-							chk=true;
-							num++;
-							if(pep.Name.Length>=8)
-								toPrint.AppendFormat("\t{0}\t:\t{1}\t:\t{2}\n",
-									pep.Name, data.Value.Item1.ToString(),data.Value.Item2.ToString());
-							else
-								toPrint.AppendFormat("\t{0}\t\t:\t{1}\t:\t{2}\n",
-									pep.Name, data.Value.Item1.ToString(),data.Value.Item2.ToString());
-						}
-					}
-					if(chk)
-						toPrint.AppendFormat("\n");
-				}
-				toPrint.AppendFormat("\n\tTotal number of transactions on {0} : {1}\n\n",
-					cDate.ToLongDateString(),num.ToString());
+				bool multiple=false;
+				toPrint.AppendFormat("{0}",showdatehelper(cDate,ref multiple));
 				Console.WriteLine(toPrint.ToString());
 			}
 			catch {
