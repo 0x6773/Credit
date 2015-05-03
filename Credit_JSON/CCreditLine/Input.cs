@@ -114,6 +114,10 @@ namespace CCreditLine
                     Commands.show();
                     break;
 
+                case "showafterdate":
+                    Commands.showafterdate();
+                    break;
+
                 case "showall":
                     Commands.showall();
                     break;
