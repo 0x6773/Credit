@@ -18,90 +18,121 @@ namespace CCreditLine
         private static bool doubleEnter = false;
         public static List<String> words = new List<string>();
 
-        public static void getUserInput()
+        /*
+         * All User Input Handled Here
+         */
+        public static void getUserInput(string[] args)
         {
-            while (true)
+            if (args.Length == 0)
             {
-                Output.lineCommand();
-                string inn = Console.ReadLine();
-
-                // Check if input is Ctrl + Z
-                if (inn == null)
+                while (true)
                 {
-                    Console.Beep();
-                    Environment.Exit(0);
+                    Output.lineCommand();
+                    string inn = Console.ReadLine();
+
+                    // Check if input is Ctrl + Z
+                    if (inn == null)
+                    {
+                        Console.Beep();
+                        Environment.Exit(0);
+                    }
+
+                    // Double Enter exit
+                    if (inn != "")
+                        doubleEnter = false;
+                    else if (inn == "" && !doubleEnter)
+                        doubleEnter = true;
+                    else if (inn == "" && doubleEnter)
+                        Environment.Exit(0);
+
+                    words.Clear();
+
+                    var temp1 = inn.Split(' ');         //  Split input into words
+                    var temp2 = temp1.Where(s => s != "");
+
+                    foreach (var temp in temp2)
+                        words.Add(temp);
+
+                    if (words.Count == 0)
+                        continue;
+
+                    switching(words[0].ToLower());
                 }
+            }
+            else
+            {
 
-                // Double Enter exit
-                if (inn != "")
-                    doubleEnter = false;
-                else if (inn == "" && !doubleEnter)
-                    doubleEnter = true;
-                else if (inn == "" && doubleEnter)
-                    Environment.Exit(0);
-
-                words.Clear();
-
-                var temp1 = inn.Split(' ');         //  Split input into words
-                var temp2 = temp1.Where(s => s != "");                
-
-                foreach (var temp in temp2)
+                foreach (var temp in args)
                     words.Add(temp);
 
-                if (words.Count == 0)
-                    continue;
+                switching(words[0].ToLower());
 
-                
-                switch (words[0].ToLower())
-                {
-                    case "about":
-                        Commands.about();
-                        break;
+                Environment.Exit(0);
+            }	// if -else
+        }//getUserInput
 
-                    case "add":
-                        Commands.add();
-                        break;
-                      
-                    case "clear":
-                        Commands.clear();
-                        break;
-                        
-                    case "cls":
-                        Commands.cls();
-                        break;
-                    
-                    case "delete":
-                        Commands.delete();
-                        break;
-                        
-                    case "exit":
-                        Commands.exit();
-                        break;
-                    
-                    case "help":
-                        Commands.help();
-                        break;
-                        
-                    case "show":
-                        Commands.show();
-                        break;
-                        
-                    case "showall":
-                        Commands.showall();
-                        break;
-                    
-                    case "total":
-                        Commands.total();
-                        break;
+        /*
+         * Helper Function
+         */
+        private static void switching(string _cc)
+        {
+            switch (_cc)
+            {
+                case "about":
+                    Commands.about();
+                    break;
 
-                    case "update":
-                        Commands.update();
-                        break;
+                case "add":
+                    Commands.add();
+                    break;
 
-                    default:
-                        Output.showCommandError(words[0]);
-                        continue;
-                }
+                case "branch":
+                    Commands.branch();
+                    break;
+
+                case "clear":
+                    Commands.clear();
+                    break;
+
+                case "cls":
+                    Commands.cls();
+                    break;
+
+                case "delete":
+                    Commands.delete();
+                    break;
+
+                case "exit":
+                    Commands.exit();
+                    break;
+
+                case "help":
+                    Commands.help();
+                    break;
+
+                case "show":
+                    Commands.show();
+                    break;
+
+                case "showall":
+                    Commands.showall();
+                    break;
+
+                case "showdate":
+                    Commands.showdate();
+                    break;
+
+                case "total":
+                    Commands.total();
+                    break;
+
+                case "update":
+                    Commands.update();
+                    break;
+
+                default:
+                    Output.showCommandError(words[0]);
+                    break;
             }
         }
     }
