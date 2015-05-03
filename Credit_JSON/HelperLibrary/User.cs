@@ -16,15 +16,18 @@ namespace HelperLibrary
     {
         public static List<UserData> mainData;
 
-        public static bool Search(string _Name)     // Search for a specific person
+        /*
+         * Find presence of any user
+         */
+        public static bool Search(string _Name)
         {
             try
-            {   
+            {
                 if (mainData.Count == 0)
                     return false;
-                foreach (var temp in mainData)
-                    if (temp.Name.ToUpper() == _Name.ToUpper())
-                        return true;
+
+                if (mainData.Where(x => x.Name.ToUpper() == _Name.ToUpper()).ToList().Count > 0)
+                    return true;
             }
             catch
             {
@@ -37,12 +40,15 @@ namespace HelperLibrary
             return false;
         }
 
-        public static void AddUser(string _Name,double _Amu = 0.0)    // Add User to Records with _Amu
+        /*
+         * AddUser with current information 
+         */
+        public static void AddUser(string _Name, double _Amu = 0.0, string _note = "--Nil--")
         {
             var temp = new UserData(_Name);
             try
             {
-                temp.InsertData(_Amu);
+                temp.InsertData(_Amu, _note);
                 mainData.Add(temp);
                 WriteReadData();
             }
@@ -54,33 +60,36 @@ namespace HelperLibrary
             }
             finally
             {
-
             }
         }
 
-        public static void UpdateUser(string _Name,double _Amu)    //Update Account for user
+        /*
+         * Update User
+         */
+        public static void UpdateUser(string _Name, double _Amu, string _note = "--Nil--")
         {
             try
             {
                 ReadDataFromFile();
-                foreach (var s in mainData.Where(w => w.Name == _Name))
-                    s.InsertData(_Amu);
+                foreach (var temp in mainData.Where(w => w.Name == _Name))
+                    temp.InsertData(_Amu, _note);
                 WriteReadData();
             }
             catch
             {
-                
             }
             finally
             {
-
             }
         }
-            
-        public static double GetSumOfUser()         // Get Sum of All users
+
+        /*
+         * Get Sum of All Users 
+         */
+        public static double GetSumOfUser()
         {
             try
-            {                
+            {
                 double toReturn = 0.0;
                 foreach (var item in mainData)
                     toReturn += item.GetSumAll();
@@ -88,11 +97,9 @@ namespace HelperLibrary
             }
             catch
             {
-
             }
             finally
             {
-                
             }
             return 0.0;
         }
