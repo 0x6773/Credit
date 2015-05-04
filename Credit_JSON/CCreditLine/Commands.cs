@@ -177,9 +177,9 @@ namespace CCreditLine
             {
                 Console.WriteLine(" > Have you forget to give name to Delete?");
             }
-            catch
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
             finally
             {
