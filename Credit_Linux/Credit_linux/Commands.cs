@@ -20,7 +20,7 @@ namespace Credit_linux
 		 */
 		public static void about()
 		{
-			Output.about();
+			Output.about ();
 		}
 
 		/*
@@ -166,8 +166,8 @@ namespace Credit_linux
 			catch (ArgumentOutOfRangeException) {
 				Console.WriteLine(" > Have you forget to give name to Delete?");
 			}
-			catch {
-
+			catch (Exception e){
+				Console.WriteLine (e.Message);
 			}
 			finally	{
 
