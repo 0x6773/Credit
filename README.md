@@ -1,22 +1,26 @@
-# Credit README
+# Credit ReadMe First
+ 
+# What is [```Credit```](https://github.com/mafiya69/Credit) ? 
 
-Maintain your credit with the help of simple UI or with Command Line
+Maintain your credit with the help ```Credit``` in both Windows And Linux
 
-## Getting Started
+## How to Use ?
 
-To Use You Must Have Visual Studio 2013 or Visual Studio 2015 installed
+1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
+2. Go to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) if you are Windows User for more Infomation.
 
-Use it and Have Fun
+As I am on Linux from few Months, ```Credit for Windows```, I rarely update ```Credit for Windows``` (Outdated)
 
-## How to Use
+## How to contribute ?
 
-UI based is easy to use.
-Type "help" in Command Line to get help
+1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
+2. Go to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) if you are Windows User  for more Infomation.
 
-## Libraries Used
+# Wanted
 
-.net Framework 4.5.1 with external NewtonSoft json Library for writing data to file in json format
-Made using Microsoft Visual Studio 2013 and Microsoft SQL Server Management Studio 2014.
+Anyone who can contribute to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) and make it updated with [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows).
 
-##Credit for Linux(Terminal)
-To Compile Credit for Linux You need to have `Mono-C#` compiler installed on your system.
+## How to contribute ?
+
+1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
+2. Go to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) if you are Windows User for more Infomation.
