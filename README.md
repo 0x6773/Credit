@@ -1,22 +1,40 @@
-# Credit README
+# Credit ReadMe First
+ 
+# What is [```Credit```](https://github.com/mafiya69/Credit) ? 
 
-Maintain your credit with the help of simple UI or with Command Line
+Maintain your credit with the help ```Credit``` in both Windows And Linux
 
-## Getting Started
+## Clone First!
 
-To Use You Must Have Visual Studio 2013 or Visual Studio 2015 installed
+Open Terminal(Linux) or Git Shell(Windows) or Git for Windows to clone the project.
+For Terminal and Git Shell Users :
+```
+git clone https://github.com/mafiya69/Credit
+cd Credit
+```
+Make sure no directory is named Credit!
 
-Use it and Have Fun
+## How to Use ?
 
-## How to Use
+1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
+2. Go to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) if you are Windows User for more Infomation.
 
-UI based is easy to use.
-Type "help" in Command Line to get help
+As I am on Linux from few Months, ```Credit for Windows```, I rarely update ```Credit for Windows``` (Outdated)
 
-## Libraries Used
+## How to contribute ?
 
-.net Framework 4.5.1 with external NewtonSoft json Library for writing data to file in json format
-Made using Microsoft Visual Studio 2013 and Microsoft SQL Server Management Studio 2014.
+1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
+2. Go to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) if you are Windows User  for more Infomation.
 
-##Credit for Linux(Terminal)
-To Compile Credit for Linux You need to have `Mono-C#` compiler installed on your system.
+# Wanted
+
+Anyone who can contribute to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) and make it updated with [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux).
+
+## How to contribute ?
+
+1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
+2. Go to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) if you are Windows User for more Infomation.
+
+## Want to report an Issue ?
+
+[```Report Issue```](https://github.com/mafiya69/Credit/issues/new) or just e-mail me at [```gsiitbhu@gmail.com```](mailto:gsiitbhu@gmail.com)
