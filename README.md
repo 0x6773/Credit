@@ -18,7 +18,7 @@ As I am on Linux from few Months, ```Credit for Windows```, I rarely update ```C
 
 # Wanted
 
-Anyone who can contribute to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) and make it updated with [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows).
+Anyone who can contribute to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) and make it updated with [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux).
 
 ## How to contribute ?
 
