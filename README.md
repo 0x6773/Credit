@@ -4,6 +4,18 @@
 
 Maintain your credit with the help ```Credit``` in both Windows And Linux
 
+## Clone First!
+
+Open Terminal(Linux) or Git Shell(Windows) or Git for Windows to clone the project.
+For Terminal and Git Shell Users :
+```
+git clone https://github.com/mafiya69/Credit
+cd Credit
+```
+Make sure no directory is named Credit!
+
+
+
 ## How to Use ?
 
 1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
