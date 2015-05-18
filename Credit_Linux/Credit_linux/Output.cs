@@ -24,7 +24,7 @@ namespace Credit_linux
 
 		public static void about()
 		{
-			Console.Write(" - - Credit_linux - - \nVersion : 3.1.6.9\nMade By : Govind Sahai\nContact : gsiitbhu_at_gmail.com\n");
+			Console.Write(" - - Credit_linux - - \nVersion : 3.1.9.0\nMade By : Govind Sahai\nContact : gsiitbhu_at_gmail.com\n");
 		}
 
 		public static void help()
