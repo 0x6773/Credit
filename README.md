@@ -14,8 +14,6 @@ cd Credit
 ```
 Make sure no directory is named Credit!
 
-
-
 ## How to Use ?
 
 1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
@@ -36,3 +34,7 @@ Anyone who can contribute to [```Credit for Windows```](https://github.com/mafiy
 
 1. Go to [```Credit for Linux```](https://github.com/mafiya69/Credit/tree/master/Credit_Linux) if you are Linux User for more Infomation.
 2. Go to [```Credit for Windows```](https://github.com/mafiya69/Credit/tree/master/Credit_Windows) if you are Windows User for more Infomation.
+
+## Want to report an Issue ?
+
+[```Report Issue```](https://github.com/mafiya69/Credit/issues/new) or just e-mail me at [```gsiitbhu@gmail.com```](mailto:gsiitbhu@gmail.com)
