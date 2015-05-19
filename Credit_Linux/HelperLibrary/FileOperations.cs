@@ -15,51 +15,56 @@ namespace HelperLibrary
 {
 	public static partial class User
 	{
-		public static string folderPath= @"/mnt/sda5/Credit";
+		// Folder Path in which json files to be kept
+		// Set to Path of .exe file
+		//public static readonly string folderPath = AppDomain.CurrentDomain.BaseDirectory + @"/Data/";
+		public static readonly string folderPath = @"/mnt/sda5/Credit/";
+		// JSON File path
 		public static string filePath = null;
-		public static string branchFile=folderPath+@"/branch.txt";
+		// Branch File Path
+		public static readonly string branchFile = folderPath + @"/branch.txt";
+		// Name of current Branch
 		public static string currBranch = null;
 
 		/*
 		 * Get Branch Previously at, At StartUp
 		 */
 		public static void getBranch()
-		{
+		{			
 			try
 			{
-				using(var streamRead=new StreamReader(branchFile))
+				using(var streamRead = new StreamReader(branchFile))
 				{
-					currBranch=streamRead.ReadToEnd();
-					currBranch=currBranch.Trim();
-					filePath=folderPath+@"/"+currBranch+@".json";
+					currBranch = streamRead.ReadToEnd().Trim();
+					filePath = folderPath + @"/" + currBranch + @".json";
 				}
 			}
-			catch 
+			catch (Exception ex)
 			{
-				try
+				// Exception Handling should be explicit
+				if (ex is DirectoryNotFoundException || ex is FileNotFoundException) 
 				{
-					using (var sw = new StreamWriter (branchFile)) {
-						sw.Write ("main");
+					try 
+					{
+						if(!(Directory.Exists(branchFile) || File.Exists(branchFile)))
+						{
+							throw new DirectoryNotFoundException();
+						}
+					} 
+					catch (DirectoryNotFoundException) 
+					{
+						Directory.CreateDirectory (folderPath);
+					} 
+					finally 
+					{
+						using (var sw = new StreamWriter (branchFile)) 
+						{
+							sw.Write ("main");
+						}
+						currBranch = "main";
+						filePath = folderPath + @"/" + currBranch + @".json";
 					}
-					currBranch="main";
-					filePath=folderPath+@"/"+currBranch+@".json";
 				}
-				catch(DirectoryNotFoundException) 
-				{
-					Directory.CreateDirectory (folderPath);
-				}
-				finally 
-				{
-					using (var sw = new StreamWriter (branchFile)) {
-						sw.Write ("main");
-					}
-					currBranch="main";
-					filePath=folderPath+@"/"+currBranch+@".json";
-				}
-			}
-			finally 
-			{
-
 			}
 		}
 
@@ -70,12 +75,12 @@ namespace HelperLibrary
 		{
 			try
 			{
-				string tempBranchName = folderPath+@"/"+bName+@".json";
+				string tempBranchName = folderPath + @"/" + bName + @".json";
 				if (!File.Exists (tempBranchName))
 				{
 					Console.WriteLine(" > There in no branch Named : {0}, would you like to create a new one?(Y for Yes)",bName);
-					string ans=Console.ReadLine().Trim();
-					if(ans.ToUpper()=="Y")
+					char ans = Console.ReadLine().Trim().ToUpper()[0];
+					if(ans == 'Y')
 					{
 						File.Create (tempBranchName);
 					}
@@ -85,23 +90,19 @@ namespace HelperLibrary
 						throw new Exception();
 					}
 				}
-				Console.WriteLine(" > Switched to branch : {0}.",bName);
-				using (var sw = new StreamWriter (branchFile)) {
+				Console.WriteLine(" > Switched to branch : {0}.", bName);
+				using (var sw = new StreamWriter (branchFile)) 
+				{
 					sw.Write (bName);
 				}
-				filePath=tempBranchName;
-				currBranch=bName;
+				filePath = tempBranchName;
+				currBranch = bName;
 				ReadDataFromFile();
 			}
-			catch 
+			catch (Exception)
 			{
 
 			}
-			finally
-			{
-
-			}
-
 		}
 
 		/*
@@ -111,34 +112,17 @@ namespace HelperLibrary
 		{
 			try
 			{
-				using(var streamRead=new StreamReader(filePath))
+				using(var streamRead = new StreamReader(filePath))
 				{
-					string json=streamRead.ReadToEnd();
-					mainData=JsonConvert.DeserializeObject<List<UserData>>(json);
+					string json = streamRead.ReadToEnd();
+					mainData = JsonConvert.DeserializeObject<List<UserData>>(json);
 				}
 				mainData.Sort();
 			}
-
 			catch
 			{
-				try
-				{
-					if (!File.Exists (filePath))
-						File.Create (filePath);
-				}
-				catch(DirectoryNotFoundException) 
-				{
-					Directory.CreateDirectory (folderPath);
-				}
-				finally 
-				{
-					if (!File.Exists (filePath))
-						File.Create (filePath);
-				}
-			}
-			finally 
-			{
-
+				if (!File.Exists (filePath))
+					File.Create (filePath);
 			}
 		}
 
@@ -150,8 +134,8 @@ namespace HelperLibrary
 			try
 			{
 				mainData.Sort();
-				string json=JsonConvert.SerializeObject(mainData.ToArray());
-				File.WriteAllText(filePath,json);
+				string json = JsonConvert.SerializeObject(mainData.ToArray());
+				File.WriteAllText(filePath, json);
 			}
 			catch 
 			{
