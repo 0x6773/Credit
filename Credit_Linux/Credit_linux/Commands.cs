@@ -34,18 +34,18 @@ namespace Credit_linux
 					throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is Already Present!");
 
 				double _initAMU = 0.0; 
-				string _note="--Nil--";
+				string _note = "--Nil--";
 
 				try
 				{
 					_initAMU = double.Parse(Input.words[2]);
-					if(Input.words.Count>3)
+					if(Input.words.Count > 3)
 					{
 						_note=Input.words[3];
-						_note=_note.Trim().Replace('+',' ');
+						_note=_note.Trim().Replace('+', ' ');
 					}
 					else
-						_note="--Nil--";	
+						_note = "--Nil--";	
 				}
 				catch (ArgumentOutOfRangeException)
 				{
@@ -59,17 +59,21 @@ namespace Credit_linux
 				}
 				finally
 				{
-					User.AddUser(Input.words[1], _initAMU,_note);
+					User.AddUser(Input.words[1], _initAMU, _note);
 					Console.Write(" > User created with Name \"" + Input.words[1] + "\". \n > Initializing with : " + _initAMU.ToString() + "\n"); 
 				}
 			}
-			catch(ArgumentOutOfRangeException) {
+			catch(ArgumentOutOfRangeException) 
+			{
 				Console.WriteLine(" > Have you forget to give name to add to your Records?");
 			}
-			catch (Exception e) {
+			catch (Exception e) 
+			{
 				Console.WriteLine(e.Message);
 			}
-			finally{
+			finally
+			{
+				
 			}
 		}
 
@@ -81,28 +85,30 @@ namespace Credit_linux
 			try
 			{
 				var bName = Input.words[1];
-				if(bName.Trim().Length==0)
+				if(bName.Trim().Length == 0)
 					throw new Exception();
 				User.setBranch(bName);
 			}
-			catch {
+			catch 
+			{
 
 			}
 			finally 
 			{
 				try
 				{
-					string[] branches=Directory.GetFiles(User.folderPath,"*.json");
-					var toPrint=new StringBuilder("");
+					string[] branches = Directory.GetFiles(User.folderPath, "*.json");
+					var toPrint = new StringBuilder("");
 					toPrint.AppendFormat("\tTotal Number of branches : {0}\n\tBranches : \n",branches.Length);
 					foreach(var temp in branches)
 					{
-						var fileInfo=new FileInfo(temp);
+						var fileInfo = new FileInfo(temp);
 						toPrint.AppendFormat("\t\t{0}\n", fileInfo.Name.Split('.')[0]);
 					}
 					Console.WriteLine(toPrint.ToString());
 				}
-				catch {
+				catch 
+				{
 
 				}
 			}
@@ -116,8 +122,8 @@ namespace Credit_linux
 			try
 			{
 				Console.Write("Are you Sure You Want to Delete All data(Press Y for Yes) :");
-				var ans = Console.ReadLine()[0]; 
-				if(ans.ToString().ToLower()=="y")
+				char ans = Console.ReadLine().Trim().ToUpper()[0]; 
+				if(ans == 'Y')
 				{
 					foreach(var temp in User.mainData)
 						Console.WriteLine(" > User " + " deleted : " + temp.Name); 
@@ -125,9 +131,13 @@ namespace Credit_linux
 					User.WriteReadData();
 				}
 			}
-			catch {
+			catch 
+			{
+				
 			}
-			finally {
+			finally 
+			{
+				
 			}
 		}
 
@@ -146,30 +156,28 @@ namespace Credit_linux
 		{
 			try
 			{
-				if (!User.Search(Input.words[1]))
+				if (!User.Search(Input.words[1].ToUpper()))
 					throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is NOT Present!");
 
 				Console.WriteLine("Are you sure want to delete Account with Name : {0} on branch : {1}?(Y for Yes)",Input.words[1],User.currBranch);
-				string ans=Console.ReadLine().Trim();
-
-				if(ans.ToUpper()!="Y")
+				char ans = Console.ReadLine().Trim().ToUpper()[0];
+				if(ans != 'Y')
 					throw new Exception();
 
-				List<UserData> temp = new List<UserData>();
-				foreach (var x in User.mainData.Where(s => s.Name != Input.words[1]))
-					temp.Add(x);
-				User.mainData.Clear();
+				User.mainData = User.mainData.Where(s => s.Name.ToUpper() != Input.words[1].ToUpper()).ToList();
 				Console.Write(" > User deleted with Name \"" + Input.words[1] + "\".\n"); 
-				User.mainData = temp;
 				User.WriteReadData();
 			}
-			catch (ArgumentOutOfRangeException) {
-				Console.WriteLine(" > Have you forget to give name to Delete?");
+			catch (ArgumentOutOfRangeException)
+			{
+				Console.WriteLine(" > Have you forget to give name to Show details?");
 			}
-			catch (Exception e){
-				Console.WriteLine (e.Message);
+			catch(Exception e) 
+			{
+				Console.WriteLine (e.Message);	
 			}
-			finally	{
+			finally	
+			{
 
 			}
 		}
@@ -197,18 +205,17 @@ namespace Credit_linux
 		{
 			try
 			{
-				if (!User.Search(Input.words[1]))
+				if (!User.Search(Input.words[1].ToUpper()))
 					throw new Exception(" > User Record With Name \"" + Input.words[1] + "\" is NOT Present!");
 
-				StringBuilder toPrint = new StringBuilder("");
-				toPrint.Append("\tAmount\t\t\tDate Added\t\t\tNote\n\n");
-				foreach (var temp in User.mainData.Where(s => s.Name == Input.words[1]))
+				StringBuilder toPrint = new StringBuilder("\n");
+				foreach (var temp in User.mainData.Where(s => s.Name.ToUpper() == Input.words[1].ToUpper()))
 				{
 					foreach (var xx in temp.userData)
-						toPrint.AppendFormat("\t{0}\t\t:\t{1}\t:\t{2}\n", 
-							xx.Value.Item1.ToString(), xx.Key.ToString(),xx.Value.Item2.ToString());
+						toPrint.AppendFormat("\t{0}\t\t:\t{1}\t\t:\t{2}\n", 
+							xx.Value.Item1.ToString(), xx.Key.ToLongDateString(), xx.Value.Item2.ToString());
 
-					toPrint.AppendFormat("\n\tTotal Balance with {0} is {1}\n",Input.words[1],temp.GetSumAll());
+					toPrint.AppendFormat("\n\tTotal Balance with {0} is {1}\n", Input.words[1], temp.GetSumAll());
 				}
 
 				Console.WriteLine(toPrint.ToString());
@@ -217,9 +224,9 @@ namespace Credit_linux
 			{
 				Console.WriteLine(" > Have you forget to give name to Show details?");
 			}
-			catch (Exception e)
+			catch(Exception e) 
 			{
-				Console.WriteLine(e.Message);
+				Console.WriteLine (e.Message);	
 			}
 			finally
 			{
@@ -228,25 +235,109 @@ namespace Credit_linux
 		}
 
 		/*
-		 * Show all Users
+		 * Returns Data on current Date
+		 * Helper Method to : showdate and showdateafter
 		 */
-		public static void showall()
+		private static StringBuilder showdatehelper (DateTime cDate)
+		{
+			StringBuilder toReturn=new StringBuilder("");
+			try
+			{
+				toReturn.AppendFormat("\n  Your Transaction on {0}\n\n", cDate.ToLongDateString());
+
+				int num = 0;
+
+				foreach(var pep in User.mainData)
+				{
+					var data0 = pep.userData.Where(x => x.Key.Date == cDate.Date);
+					foreach (var data in data0) 
+					{
+						num++;
+						if(pep.Name.Length >= 8)
+							toReturn.AppendFormat("\t{0}\t:\t{1}\t:\t{2}\n",
+								pep.Name, data.Value.Item1.ToString(), data.Value.Item2.ToString());
+						else
+							toReturn.AppendFormat("\t{0}\t\t:\t{1}\t:\t{2}\n",
+						pep.Name, data.Value.Item1.ToString(), data.Value.Item2.ToString());
+					}
+				}
+				if(num == 0)
+				{
+					toReturn = null;
+					throw new Exception();
+				}
+				toReturn.AppendFormat("\n\tTotal number of transactions on {0} : {1}\n\n",
+					cDate.ToLongDateString(), num.ToString());
+			}
+			catch 
+			{
+
+			}
+			finally 
+			{
+
+			}
+			return toReturn;
+		}
+
+		/*
+		 * Show All Transaction After Date
+		 */
+		public static void showafterdate()
 		{
 			try
 			{
 				StringBuilder toPrint = new StringBuilder("");
-				toPrint.Append("\tName\t\t\tAmount\n\n");
-				foreach (var temp in User.mainData){
-					if(temp.Name.Length>=8)
-						toPrint.AppendFormat("\t{0}\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
-					else
-						toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+				DateTime cDate = DateTime.Now.AddDays(-1);
+				try
+				{
+					cDate = DateTime.Parse(Input.words[1]);
 				}
+				catch
+				{
+					
+				}
+				for(;cDate.Date <= DateTime.Now.Date; cDate = cDate.AddDays(1))
+					toPrint.AppendFormat("{0}", showdatehelper(cDate));
 				Console.WriteLine(toPrint.ToString());
 			}
-			catch {
+			catch 
+			{
+
 			}
-			finally {
+			finally 
+			{
+
+			}
+		}
+
+		/*
+		 * Show transactions on given date
+		 */
+		public static void showdate()
+		{
+			try
+			{
+				StringBuilder toPrint = new StringBuilder("");
+				DateTime cDate = DateTime.Now;
+				try
+				{
+					cDate = DateTime.Parse(Input.words[1]);
+				}
+				catch
+				{
+					
+				}
+				toPrint.AppendFormat("{0}", showdatehelper(cDate));
+				Console.WriteLine(toPrint.ToString());
+			}
+			catch 
+			{
+
+			}
+			finally 
+			{
+
 			}
 		}
 
@@ -299,63 +390,6 @@ namespace Credit_linux
 		}
 
 		/*
-		 * Show All Transaction After Date
-		 */
-		public static void showafterdate()
-		{
-			try
-			{
-				StringBuilder toPrint=new StringBuilder("");
-				DateTime cDate=DateTime.Now.AddDays(-1);
-				try
-				{
-					cDate=DateTime.Parse(Input.words[1]);
-				}
-				catch{
-				}
-				bool multiple=false;
-				for(;cDate.Date<=DateTime.Now.Date;cDate=cDate.AddDays(1))
-					toPrint.AppendFormat("{0}",showdatehelper(cDate,ref multiple));
-				Console.WriteLine(toPrint.ToString());
-			}
-			catch 
-			{
-
-			}
-			finally 
-			{
-
-			}
-		}
-
-		/*
-		 * Show transactions on given date
-		 */
-		public static void showdate()
-		{
-			try
-			{
-				StringBuilder toPrint=new StringBuilder("");
-				DateTime cDate=DateTime.Now;
-				try
-				{
-					cDate=DateTime.Parse(Input.words[1]);
-				}
-				catch{
-				}
-				bool multiple=false;
-				toPrint.AppendFormat("{0}",showdatehelper(cDate,ref multiple));
-				Console.WriteLine(toPrint.ToString());
-			}
-			catch {
-
-			}
-			finally {
-
-			}
-		}
-
-		/*
 		 * Show Total User-Same a showall()
 		 */
 		public static void total()
@@ -369,10 +403,10 @@ namespace Credit_linux
 				foreach (var temp in User.mainData)
 				{
 					var xx = temp.GetSumAll();
-					if(temp.Name.Length>=8)
-						toPrint.AppendFormat("\t{0}\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+					if(temp.Name.Length >= 8)
+						toPrint.AppendFormat("\t{0}\t:\t{1}\n", temp.Name, xx.ToString());
 					else
-						toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, temp.GetSumAll().ToString());
+						toPrint.AppendFormat("\t{0}\t\t:\t{1}\n", temp.Name, xx.ToString());
 					total += xx;
 					number++;
 				}
@@ -380,9 +414,13 @@ namespace Credit_linux
 				Console.WriteLine(toPrint.ToString());
 				Console.WriteLine("\tTotal Number of Records : {0}", number.ToString());
 			}
-			catch {
+			catch 
+			{
+				
 			}
-			finally {
+			finally 
+			{
+				
 			}
 		}
 
@@ -423,7 +461,9 @@ namespace Credit_linux
 					_update_AMU = 0.0;
 					return;
 				}
-				finally	{
+				finally	
+				{
+					
 				}
 				User.UpdateUser(Input.words[1], _update_AMU, _note);
 				Console.Write(" > User updated with Name \"" + Input.words[1] + 
@@ -437,7 +477,9 @@ namespace Credit_linux
 			{
 				Console.WriteLine(e.Message);
 			}
-			finally	{
+			finally	
+			{
+				
 			}
 		}
 	}

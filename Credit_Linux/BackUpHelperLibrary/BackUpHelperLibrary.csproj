@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6E3B9D9F-FE82-427A-BC74-BA224FA7C7A9}</ProjectGuid>
+    <ProjectGuid>{623B9A98-AA80-462D-9D2D-D0B603CE427B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>HelperLibrary</RootNamespace>
-    <AssemblyName>HelperLibrary</AssemblyName>
+    <RootNamespace>BackUpHelperLibrary</RootNamespace>
+    <AssemblyName>BackUpHelperLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,16 +29,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Credit_JSON\Credit\JsonNet45\Newtonsoft.Json.dll</HintPath>
-      <Package>monodevelop</Package>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="UserData.cs" />
-    <Compile Include="FileOperations.cs" />
+    <Compile Include="BackUp.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

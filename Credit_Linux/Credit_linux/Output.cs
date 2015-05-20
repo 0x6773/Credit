@@ -24,7 +24,7 @@ namespace Credit_linux
 
 		public static void about()
 		{
-			Console.Write(" - - Credit_linux - - \nVersion : 3.1.9.0\nMade By : Govind Sahai\nContact : gsiitbhu_at_gmail.com\n");
+			Console.Write(" - - Credit_linux - - \nVersion : 4.0.0.0\nMade By : Govind Sahai\nContact : gsiitbhu_at_gmail.com\n");
 		}
 
 		public static void help()
@@ -41,7 +41,6 @@ namespace Credit_linux
 			Console.Write("\n help \t-\t-\t-\t-\t-\t: To get Help");
 			Console.Write("\n show [name]\t-\t-\t-\t-\t: Show all the data associated with [name]");
 			Console.Write("\n showafterdate [date]\t-\t-\t-\t: show all transactions after [date]");
-			Console.Write("\n showall \t-\t-\t-\t-\t: Show all Records with Total Balance");
 			Console.Write("\n showdate [date]\t-\t-\t-\t: Show all Records on [date]");
 			Console.Write("\n total \t-\t-\t-\t-\t-\t: Total Balance with ALL");
 			Console.Write("\n update [name] [amount] [Info of Money]-\t: Add [amount] to Record [name]\n");

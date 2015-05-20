@@ -7,21 +7,22 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HelperLibrary
 {
-	public class UserData : IComparable
+	public sealed class UserData : IComparable
 	{
 		public string Name;
 
-		public Dictionary<DateTime,Tuple<double,string>> userData;
+		public Dictionary <DateTime, Tuple <double, string>> userData;
 
 		/*
 		 * Constructor 
 		 */
 		public UserData(string s)
 		{
-			this.userData = new Dictionary<DateTime,Tuple<double,string>> ();
+			this.userData = new Dictionary <DateTime, Tuple <double, string>> ();
 			this.Name = s;
 		}
 
@@ -30,13 +31,7 @@ namespace HelperLibrary
 		 */
 		public void InsertData (double _Amu, string _note)
 		{
-			try {
-				this.userData.Add(DateTime.Now,new Tuple<double,string>(_Amu,_note));
-			}
-			catch {
-			}
-			finally {
-			}
+			this.userData.Add(DateTime.Now, new Tuple <double, string> (_Amu, _note));
 		}
 
 		/*
@@ -44,10 +39,7 @@ namespace HelperLibrary
 		 */
 		public double GetSumAll()
 		{
-			double toReturn = 0.0;
-			foreach (var temp in this.userData)
-				toReturn += temp.Value.Item1;
-			return toReturn;
+			return this.userData.Sum (x => x.Value.Item1);
 		}
 
 		/*

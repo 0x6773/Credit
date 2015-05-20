@@ -45,5 +45,9 @@
       <Project>{6E3B9D9F-FE82-427A-BC74-BA224FA7C7A9}</Project>
       <Name>HelperLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BackUpHelperLibrary\BackUpHelperLibrary.csproj">
+      <Project>{623B9A98-AA80-462D-9D2D-D0B603CE427B}</Project>
+      <Name>BackUpHelperLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
