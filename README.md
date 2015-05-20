@@ -1,19 +1,5 @@
 # Credit ReadMe First
  
-# BRANCH ```REWRITE```
-
-TODOS : 
-- [x] Make Code more ```compact```
-- [x] Use ```LINQ``` to ```QUERY```
-- [x] Remove similar functions
-- [ ] Make [```Credit```](https://github.com/mafiya69/Credit) faster
-- [x] ```sealed``` all classes
-- [ ] Make Documentation
-- [ ] Add BackUp Support
-- [ ] Add F# if required
-- [ ] More
-- [ ] Merge to ```master``
- 
 # What is [```Credit```](https://github.com/mafiya69/Credit) ? 
 
 Maintain your credit with the help ```Credit``` in both Windows And Linux
