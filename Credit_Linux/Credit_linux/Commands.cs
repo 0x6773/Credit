@@ -6,7 +6,6 @@
  */
 using HelperLibrary;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -41,8 +40,8 @@ namespace Credit_linux
 					_initAMU = double.Parse(Input.words[2]);
 					if(Input.words.Count > 3)
 					{
-						_note=Input.words[3];
-						_note=_note.Trim().Replace('+', ' ');
+						_note = Input.words[3];
+						_note = _note.Trim().Replace('+', ' ');
 					}
 					else
 						_note = "--Nil--";	
@@ -59,7 +58,7 @@ namespace Credit_linux
 				}
 				finally
 				{
-					User.AddUser(Input.words[1], _initAMU, _note);
+					User.AddUser(Input.words[1], _initAMU, _note);					
 					Console.Write(" > User created with Name \"" + Input.words[1] + "\". \n > Initializing with : " + _initAMU.ToString() + "\n"); 
 				}
 			}

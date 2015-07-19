@@ -5,7 +5,6 @@
  * 
  */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,6 +19,7 @@ namespace HelperLibrary
 		 */
 		public static bool Search(string _Name)
 		{
+			mainData = mainData ?? new List<UserData>();
 			return mainData.Any(x => x.Name.ToUpper() == _Name.ToUpper());
 		}
 
@@ -30,6 +30,7 @@ namespace HelperLibrary
 		{
 			_Name = _Name.Substring (0, 1).ToUpper () + _Name.Substring (1).ToLower ();
 			var temp = new UserData (_Name);
+			mainData = mainData ?? new List<UserData>();
 			try	
 			{
 				temp.InsertData(_Amu, _note);
@@ -37,8 +38,7 @@ namespace HelperLibrary
 			}
 			catch 
 			{
-				mainData = new List<UserData> ();
-				mainData.Add (temp);
+				throw;
 			}
 			finally 
 			{

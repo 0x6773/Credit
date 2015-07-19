@@ -7,7 +7,6 @@
 
 using HelperLibrary;
 using System;
-using System.Collections.Generic;
 
 namespace Credit_linux
 {
