@@ -1,4 +1,4 @@
-﻿﻿/*
+﻿/*
  * 
  * Copyright (c) 2015 Govind Sahai
  * Licensed Under MIT License
@@ -57,5 +57,4 @@ namespace HelperLibrary
 		}
 	}
 }
-
 
